@@ -11,8 +11,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Router basename="/">
         <Switch>
-          <Route path="/login">
-            <Login/>
+          <Route path="">
+          <Login/>
+          </Route>
+          <Route path ="/login">
           </Route>
           <Route path="/signup">
             <SignUpForm />
