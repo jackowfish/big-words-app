@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bulma/css/bulma.min.css';
-import '../styles/Login.css'
+import '../styles/Start_Page.css'
 import Button from './Button'
 
 

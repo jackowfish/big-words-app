@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Login from './components/Login'
+import StartPage from './components/Start Page'
 import SignUpForm from './components/Signup Form'
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
 
@@ -12,7 +12,7 @@ ReactDOM.render(
     <Router basename="/">
         <Switch>
           <Route path="">
-          <Login/>
+          <StartPage />
           </Route>
           <Route path ="/login">
           </Route>
