@@ -3,9 +3,10 @@ import '../styles/Button.css'
 import '../styles/Colors.css'
 
 
-function Button (props) {
+const Button = (props) => {
+
     return (
-        <button className={props.className}>{props.name}</button>
+        <button onClick={props.onClick} className={props.className}>{props.name}</button>
     )
 }
 

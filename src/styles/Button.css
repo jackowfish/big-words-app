@@ -1,5 +1,5 @@
 .button{
-    margin:0 auto;
+    margin: auto;
     display:block;
 	font-weight: 800;
 	color: black;
@@ -12,7 +12,7 @@
 }
 
 .button:hover{
-    margin:0 auto;
+    margin: auto;
     display:block;
 	transition: box-shadow 0.1s linear;
 	font-weight: 800;
@@ -25,7 +25,7 @@
 }
 
 .button:active{
-    margin:0 auto;
+    margin: auto;
     display:block;
 	font-weight: 800;
 	color: white;

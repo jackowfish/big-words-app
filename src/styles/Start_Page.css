@@ -1,5 +1,31 @@
 .logo {
-    margin-top: 10%;
-    width: auto;
+    display:flex;
+    margin:auto;
+    margin-top: 10vh;
+    width: 70vw;
     height: auto;
+	justify-content: center;
+}
+
+.background {
+	background: linear-gradient(-45deg, #FFC857, #06D6A0, #23a6d5, #153B50);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+	height: 102vh;
+}
+
+.signupform {
+    margin: 20px;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
