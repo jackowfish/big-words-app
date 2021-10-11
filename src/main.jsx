@@ -5,6 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import StartPage from './components/Start Page'
 import SignUpForm from './components/Signup Form'
 import LoginForm from './components/Login Form'
+import HomePage from './components/Home Page'
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
@@ -19,10 +20,13 @@ ReactDOM.render(
     <Router basename="/">
         <Switch>
         <Route path ="/login">
-            <LoginForm />
+            <LoginForm /> 
           </Route>
           <Route path="/signup">
             <SignUpForm />
+          </Route>
+          <Route path ="/homepage">
+            <HomePage />
           </Route>
           <Route path ="/">
             <StartPage />
