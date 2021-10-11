@@ -5,7 +5,7 @@
     margin-top: 10px;
   }
   
-  .topnav a {
+  .topnav div {
     color: gray;
     text-align: center;
     padding: 10px 16px;
@@ -21,4 +21,9 @@
   .topnav a:active {
     background-color: white;
     color: black;
+  }
+
+  .topnav a {
+    color:gray;
+
   }

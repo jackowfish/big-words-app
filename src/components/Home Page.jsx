@@ -5,9 +5,10 @@ import NavBar from './Nav Bar'
 const HomePage = () => {
 
   return (
-    <div className="columns is-vcentered background"> 
+    <div className="columns is-vcentered"> 
         <NavBar className="navbar"/>
     </div>
+    
     )
 }
 
