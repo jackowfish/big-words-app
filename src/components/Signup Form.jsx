@@ -44,7 +44,7 @@ const SignUpForm = () => {
               <input className="input" type="text" placeholder="Caregiver Last Name"/>
             </div>
           </div>
-          <div className="field">
+          {/* <div className="field">
             <div className="control">
               <input className="input" type="text" placeholder="Child First Name"/>
             </div>
@@ -53,7 +53,7 @@ const SignUpForm = () => {
             <div className="control">
               <input className="input" type="text" placeholder="Child Last Name"/>
             </div>
-          </div>
+          </div> */}
           <div className="field">
             <div className="control">
               <input className="input" type="email" placeholder="Email" {...email}/>

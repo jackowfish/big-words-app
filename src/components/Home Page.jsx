@@ -5,8 +5,8 @@ import NavBar from './Nav Bar'
 const HomePage = () => {
 
   return (
-    <div className="columns is-vcentered"> 
-        <NavBar className="navbar"/>
+    <div className="columns is-vcentered background"> 
+        <NavBar className="navbar" current="homepage"/>
     </div>
     
     )

@@ -6,7 +6,7 @@ const Search = () => {
 
     return (
       <div className="columns is-vcentered background"> 
-          <NavBar className="navbar"/>
+          <NavBar className="navbar" current="search"/>
       </div>
       )
   }
