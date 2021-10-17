@@ -1,0 +1,52 @@
+.welcomeBack {
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-bottom: 80px;
+    padding-top: 80px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+}
+
+.homeText {
+    padding-bottom: 50px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    text-decoration: underline;
+}
+
+.welcomeText {
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 36px;
+    color: black;
+}
+
+.bookDataText {
+    padding-bottom: 50px;
+    padding-top: 50px;
+    font-size: 24px;
+    color: black;
+}
+
+.previousText {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+    text-decoration: underline;
+}
+
+hr {
+border: solid 1px;
+margin: auto;
+width: 80%;
+background-color: black;
+}
+

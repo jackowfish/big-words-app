@@ -1,0 +1,87 @@
+.listener_name_section {
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 1px 3px 2px darkslategray;
+}
+
+.listener_name {
+    font-weight: bold;
+    font-size: 28px;
+    color: black;
+    padding: 8px;
+}
+
+.bigWords_section {
+    background-color: #FFC857;
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+}
+
+.bigWords_list {
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+    height: 260px;
+    overflow: auto;
+}
+
+.bigwords_title {
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+.allWords_section {
+    background-color: #FFC857;
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+}
+
+.allWords_list {
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+    height: 260px;
+    overflow: auto;
+}
+
+.allwords_title {
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+.current_word {
+    color: black;
+    font-size: 25px;
+    text-align: left;
+    background-color: white;
+    border-radius: 15px;
+    height: 40px;
+    padding-left: 8px;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: black;
+    margin-bottom: 10px;
+}
+
+.current_count {
+    float: right;
+    padding-right: 8px;
+}
