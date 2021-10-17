@@ -4,7 +4,6 @@ import 'bulma/css/bulma.min.css';
 const Word = (props) => {
 
     const word_and_count = props.name.split("_");
-    console.log(word_and_count);
 
 
     return (
