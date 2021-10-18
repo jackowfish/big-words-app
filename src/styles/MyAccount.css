@@ -1,0 +1,38 @@
+.accountBox {
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 80px;
+    padding-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+  }
+
+ 
+
+  th{
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-left: 10px;
+      text-align: left;
+      background-color: #C4C4C4;
+      color:white;
+  }
+
+  td{
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+  }
+
+  .accountHeader{
+      text-align: left;
+      font-weight: bold;
+      padding-bottom: 20px;
+      padding-left: 10px;
+      font-size: 24px;
+  }
+  
+  

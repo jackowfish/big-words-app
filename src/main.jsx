@@ -11,6 +11,8 @@ import MyWords from './components/MyWords'
 import MyLibrary from './components/MyLibrary'
 import MyAccount from './components/MyAccount'
 import Search from './components/Search'
+import BookInfo from './components/BookInfo'
+import EditPage  from './components/EditPage';
 
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
 import { getAnalytics } from "firebase/analytics";
@@ -46,6 +48,13 @@ ReactDOM.render(
           <Route path="/myaccount">
             <MyAccount />
           </Route>
+          
+          {/* Testing Book Info Page Remove/Update Later */}
+          <Route path="/bookinfo">
+            <BookInfo />
+          </Route>
+          <Route path="/editpage"><EditPage/></Route>
+          
           <Route path ="/">
             <StartPage />
           </Route>

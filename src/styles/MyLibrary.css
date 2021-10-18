@@ -1,0 +1,26 @@
+.libraryBox {
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 80px;
+    padding-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 3px 2px darkslategray;
+  }
+
+.libraryHeader{
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+.dateText{
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 5px;
+    text-decoration: underline;
+}

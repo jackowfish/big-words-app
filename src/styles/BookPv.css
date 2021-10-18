@@ -1,0 +1,52 @@
+
+.bookpv {
+    background-color:white;
+    box-shadow: 1px 3px 2px darkslategray;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .bookpv div {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+  }
+
+  .textGrouping div{
+      padding: 10px 16px;
+  }
+
+  .bookinfo{
+      display: flex;
+      align-content: center;
+      background-color: white;
+      box-shadow: 1px 3px 2px darkslategray;
+      border-radius: 10px;
+      margin-top: 10px;
+  }
+
+
+
+h2 {
+   font-weight:bold;
+   font-size: 24px;
+   
+
+}
+
+h3{
+    font-size: 16px;
+    padding: 10px 1px;
+}
+
+h4{
+    font-style:italic;
+    color:black;
+    font-size: 14px;
+}
+
+img{
+    width: 80px;
+    height: 100px;
+}

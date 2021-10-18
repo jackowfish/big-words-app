@@ -1,0 +1,40 @@
+.bookInfo {
+  background-color: white;
+  margin-top: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 80px;
+  padding-top: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 1px 3px 2px darkslategray;
+}
+
+
+.titleText {
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  color: black;
+}
+
+.bookDataText {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  font-size: 16px;
+  color: black;
+}
+
+.authorText {
+  font-style: italic;
+  font-size: 16px;
+  color: gray;
+}
+
+img{
+  max-width: 300px;
+  max-height: 500px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin: auto;
+}
