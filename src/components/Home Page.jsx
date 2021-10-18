@@ -4,10 +4,18 @@ import { getStorage } from "firebase/storage";
 import 'bulma/css/bulma.min.css';
 import '../styles/Home_Page.css'
 import NavBar from './Nav Bar'
+import Cookies from 'universal-cookie';
+import { useHistory } from 'react-router-dom'
 import Button from './Button'
 import {Link} from "react-router-dom"
 
 const HomePage = () => {
+  const cookies = new Cookies();
+  const history = useHistory();
+  
+  if(cookies.get('BigWordsUser') == null) {
+    history.push('/')
+  }
 
   var word_count = 0;
   var big_word_count = 0;

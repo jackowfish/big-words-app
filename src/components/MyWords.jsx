@@ -3,10 +3,18 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import 'bulma/css/bulma.min.css';
 import '../styles/My_Words.css'
 import NavBar from './Nav Bar'
+import Cookies from 'universal-cookie';
+import { useHistory } from 'react-router-dom'
 import BigWords from './Big Words List'
 import AllWords from './All Words List'
 
 const MyWords = () => {
+    const cookies = new Cookies();
+    const history = useHistory();
+
+    if(cookies.get('BigWordsUser') == null) {
+        history.push('/')
+    }
 
     return (
       <div className="columns is-vcentered background"> 

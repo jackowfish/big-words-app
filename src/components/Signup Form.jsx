@@ -1,29 +1,35 @@
 import React, { useState } from 'react';
-import { initializeApp } from "firebase/app";
-import firebaseConfig from '../../firebase.config';
+import getFirebase from '../../firebase.config';
 import 'bulma/css/bulma.min.css';
 import '../styles/Start_Page.css'
 import Button from './Button'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from 'react-router-dom'
 import useInput from "../hooks/useInput"
+import Cookies from 'universal-cookie';
 
-const firebaseInstance = initializeApp(firebaseConfig);
+const cookies = new Cookies();
+const firebaseInstance = getFirebase();
+const auth = getAuth();
 
-const signUp = async (event) => {
+const SignUpForm = () => {
+  const history = useHistory();
+
+  const signUp = async (event) => {
     event.preventDefault();
 
     try {
       if (firebaseInstance) {
-        const user = await firebaseInstance.auth().createUserWithEmailAndPassword(email.value, password.value)
-        console.log("user", user)
-        alert(`Welcome ${email.value}!`);
+        const user = await createUserWithEmailAndPassword(auth, email.value, password.value)
+        console.log("user", user);
+        cookies.set('BigWordsUser', user, { path: '/' });
+        history.push('/homepage');
       }
     } catch (error) {
       console.log("error", error);
       alert(error.message);
     }
 };
-
-const SignUpForm = () => {
 
   const email = useInput("")
   const password = useInput("")
@@ -66,7 +72,7 @@ const SignUpForm = () => {
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="Confirm Password"/>
+              <input className="input" type="password" placeholder="Confirm Password"/>
             </div>
           </div>
           <Button type="submit" className="yellow button" name="Sign Up" onClick={signUp}/>
