@@ -6,6 +6,7 @@ import * as firebase from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyC6XGoSkACCaHU31Rum-hDstWnsuJFIhK8",
   authDomain: "bigwords-202f6.firebaseapp.com",
+  databaseURL: "https://bigwords-202f6-default-rtdb.firebaseio.com",
   projectId: "bigwords-202f6",
   storageBucket: "bigwords-202f6.appspot.com",
   messagingSenderId: "104341008963",
