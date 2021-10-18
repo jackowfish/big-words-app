@@ -25,8 +25,7 @@ const LoginForm = () => {
     try {
       if (auth) {
         const user = await signInWithEmailAndPassword(auth, email.value, password.value);
-        console.log("user", user);
-        cookies.set('user', user);
+        cookies.set('BigWordsUser', user, { path: '/' });
         history.push('/homepage');
       }
     } catch (error) {
