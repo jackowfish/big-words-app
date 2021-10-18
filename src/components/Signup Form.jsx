@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { initializeApp } from "firebase/app";
-import firebaseConfig from '../../firebase.config';
+import getFirebase from '../../firebase.config';
 import 'bulma/css/bulma.min.css';
 import '../styles/Start_Page.css'
 import Button from './Button'
 import useInput from "../hooks/useInput"
 
-const firebaseInstance = initializeApp(firebaseConfig);
+const firebaseInstance = getFirebase();
 
 const signUp = async (event) => {
     event.preventDefault();

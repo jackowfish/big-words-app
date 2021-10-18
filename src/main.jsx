@@ -15,9 +15,9 @@ import Search from './components/Search'
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-import firebaseConfig from '../firebase.config';
+import getFirebase from '../firebase.config';
 
-const app = initializeApp(firebaseConfig);
+const app = getFirebase();
 
 const analytics = getAnalytics(app);
 

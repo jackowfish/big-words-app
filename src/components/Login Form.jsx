@@ -1,32 +1,39 @@
-import React, { useState } from 'react';
-import { initializeApp } from "firebase/app";
-import firebaseConfig from '../../firebase.config';
+import React from 'react';
+import getFirebase from '../../firebase.config';
+import Cookies from 'universal-cookie';
 import 'bulma/css/bulma.min.css';
 import '../styles/Start_Page.css'
 import Button from './Button'
 import useInput from "../hooks/useInput"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from 'react-router-dom'
 
-const firebaseInstance = initializeApp(firebaseConfig);
+const auth = getAuth();
+const firebaseInstance = getFirebase();
 
-const login = async (event) => {
+const LoginForm = () => {
+  const cookies = new Cookies();
+  
+  const history = useHistory();
+
+  const email = useInput("");
+  const password = useInput("");
+
+  const login = async (event) => {
     event.preventDefault();
 
     try {
-      if (firebaseInstance) {
-        const user = await firebaseInstance.auth().signInWithEmailAndPassword(email.value, password.value)
-        console.log("user", user)
-        alert(`Welcome ${email.value}!`);
+      if (auth) {
+        const user = await signInWithEmailAndPassword(auth, email.value, password.value);
+        console.log("user", user);
+        cookies.set('user', user);
+        history.push('/homepage');
       }
     } catch (error) {
       console.log("error", error);
       alert(error.message);
     }
-};
-
-const LoginForm = () => {
-
-  const email = useInput("")
-  const password = useInput("")
+  };
 
   return (
       <div className="columns is-vcentered background"> 
