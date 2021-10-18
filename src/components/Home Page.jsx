@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
+import getFirebase from '../../firebase.config';
 import 'bulma/css/bulma.min.css';
 import '../styles/Home_Page.css'
 import NavBar from './Nav Bar'
@@ -39,11 +41,14 @@ const HomePage = () => {
         }
     });
 
+    const auth = getAuth();
+    const firebaseApp = getFirebase();
+
   return (
     <div className="columns is-vcentered background"> 
         <NavBar className="navbar" current="homepage"/>
         <div className="column welcomeBack">
-          <h1 className="welcomeText">Welcome Back<br></br>[NAME]!</h1>
+          <h1 className="welcomeText">Welcome Back!<br></br></h1>
             <hr></hr>
             <h1 className="bookDataText">Word Count: {word_count}<br></br>Big Word Count: {big_word_count}</h1>
           <Link id="LogBooksButton" to="search">

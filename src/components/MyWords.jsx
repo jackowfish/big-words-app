@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getDatabase, ref, onValue } from "firebase/database";
 import 'bulma/css/bulma.min.css';
 import '../styles/My_Words.css'
 import NavBar from './Nav Bar'
