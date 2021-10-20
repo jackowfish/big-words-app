@@ -4,7 +4,7 @@ import NavBar from './Nav Bar'
 import Button from './Button'
 import {Link} from "react-router-dom"
 import '../styles/MyAccount.css'
-import WaitModal from './modals/waitModal';
+// import WaitModal from './modals/waitModal';
 
 const EditPage = () => {
     return(
@@ -21,7 +21,7 @@ const EditPage = () => {
                   <label className="label">Last Name</label>
                   <input className="control" type="text" placeholder="Last Name"/>
               </div>
-              <WaitModal/>
+              {/* <WaitModal/> */}
           </div>
         </div>
     )

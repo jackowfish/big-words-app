@@ -5,7 +5,7 @@ import NavBar from './Nav Bar'
 import Button from './Button'
 import {Link} from "react-router-dom"
 import {BsChevronLeft} from 'react-icons/bs'
-import LogBook from './modals/logBook';
+// import LogBook from './modals/logBook';
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const BookInfo = () => {
@@ -50,7 +50,7 @@ const BookInfo = () => {
               <Link id="ReadingHistoryButton" to="search">
                 <Button className="yellow button" name="Reading History"/>
               </Link>
-              <LogBook/>
+              {/* <LogBook/> */}
             </div>
         </div>
         

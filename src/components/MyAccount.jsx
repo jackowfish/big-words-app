@@ -8,8 +8,8 @@ import {Link} from "react-router-dom"
 import '../styles/MyAccount.css'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {BsChevronRight} from 'react-icons/bs'
-import ListenerModal from './modals/listenerModal';
-import ReaderModal from './modals/readerModal';
+// import ListenerModal from './modals/listenerModal';
+// import ReaderModal from './modals/readerModal';
 import { getAuth, signOut } from '@firebase/auth';
 
 
@@ -61,7 +61,7 @@ const MyAccount = () => {
                       <tr>
                           <th>Reader Information</th>
                           <th></th>
-                          <th><ReaderModal/></th>
+                          {/* <th><ReaderModal/></th> */}
                       </tr>
                   </thead>
                   <tbody>
@@ -76,7 +76,7 @@ const MyAccount = () => {
                           <th>Listener Information</th>
                           <th></th>
                           <th>
-                                <ListenerModal/>
+                                {/* <ListenerModal/> */}
                             </th>
                       </tr>
                   </thead>
