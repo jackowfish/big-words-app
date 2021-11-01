@@ -37,7 +37,7 @@ const LoginForm = () => {
   return (
       <div className="columns is-vcentered background"> 
         <div className="column">
-          <img src="../static/BigWords.png" className="logo"/>
+          <img src="https://firebasestorage.googleapis.com/v0/b/bigwords-202f6.appspot.com/o/BigWords.png?alt=media&token=c5301754-aba7-4c10-b1cb-389f4918be39" className="logo"/>
         </div>
         <div className="column loginForm">
           <div className="field">

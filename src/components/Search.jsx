@@ -4,7 +4,7 @@ import NavBar from './Nav Bar'
 import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom'    
 import SearchBar from './SearchBar';
-import BookPv from './BookPv';
+import BookList from './Book List';
 import '../styles/MyLibrary.css';
 
 const Search = () => {
@@ -22,7 +22,7 @@ const Search = () => {
               <SearchBar/>
               <div className="column">
                   <h1 className="libraryHeader">Featured</h1>
-                  <BookPv className="bookpv"/>
+                  <BookList className="bookList" name="featured"/>
               </div>
           </div>
       </div>

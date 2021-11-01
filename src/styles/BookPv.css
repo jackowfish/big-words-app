@@ -3,7 +3,6 @@
     background-color:white;
     box-shadow: 1px 3px 2px darkslategray;
     border-radius: 10px;
-    margin-top: 10px;
   }
 
   .bookpv div {
@@ -25,8 +24,6 @@
       border-radius: 10px;
       margin-top: 10px;
   }
-
-
 
 h2 {
    font-weight:bold;

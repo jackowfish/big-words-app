@@ -4,6 +4,7 @@ import 'bulma/css/bulma.min.css';
 import '../styles/Start_Page.css'
 import Button from './Button'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 import { useHistory } from 'react-router-dom'
 import useInput from "../hooks/useInput"
 import Cookies from 'universal-cookie';
@@ -11,6 +12,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const firebaseInstance = getFirebase();
 const auth = getAuth();
+const db = getDatabase();
 
 const SignUpForm = () => {
   const history = useHistory();
@@ -24,6 +26,12 @@ const SignUpForm = () => {
         console.log("user", user);
         cookies.set('BigWordsUser', user, { path: '/' });
         history.push('/homepage');
+
+        set(ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid), {
+          "First Name": first_name.value,
+          "Last Name": last_name.value,
+          "Books Read": "",
+      });
       }
     } catch (error) {
       console.log("error", error);
@@ -33,21 +41,24 @@ const SignUpForm = () => {
 
   const email = useInput("")
   const password = useInput("")
+  const first_name = useInput("")
+  const last_name = useInput("")
+
 
   return (
       <div className="columns is-vcentered background"> 
         <div className="column">
-          <img src="../static/BigWords.png" className="logo"/>
+          <img src="https://firebasestorage.googleapis.com/v0/b/bigwords-202f6.appspot.com/o/BigWords.png?alt=media&token=c5301754-aba7-4c10-b1cb-389f4918be39" className="logo"/>
         </div>
         <div className="column signupform">
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="Caregiver First Name"/>
+              <input className="input" type="text" placeholder="Caregiver First Name" {...first_name}/>
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="Caregiver Last Name"/>
+              <input className="input" type="text" placeholder="Caregiver Last Name" {...last_name}/>
             </div>
           </div>
           {/* <div className="field">

@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom'
 import NavBar from './Nav Bar';
 import BookPv from './BookPv';
+import BookList from './Book List';
 import SearchBar from './SearchBar';
 import'../styles/BookPv.css';
 import '../styles/MyLibrary.css';
@@ -15,6 +16,8 @@ const MyLibrary = () => {
     if(cookies.get('BigWordsUser') == null) {
         history.push('/')
     }
+
+    const current_uid = cookies.get('BigWordsUser').user.uid;
     
     return (
       <div className="columns is-vcentered background"> 
@@ -24,7 +27,7 @@ const MyLibrary = () => {
               <SearchBar/>
               <div className="column">
                   <h1 className="dateText">Month Day, Year</h1>
-                  <BookPv className="bookpv"/>
+                  <BookList className="bookList" name={current_uid}/>
               </div>
           </div>
       </div>
