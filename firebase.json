@@ -2,6 +2,16 @@
   "functions": {
     "source": "functions"
   },
+  "emulators": {
+    "hosting": {
+      "host": "127.0.0.1",
+      "port": "4873"
+    },
+    "database": {
+      "host": "127.0.0.1",
+      "port": "4874"
+    }
+  },
   "database": {
     "rules": "database.rules.json"
   },

@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import 'bulma/css/bulma.min.css';
 import '../styles/Nav_Bar.css'
-import { FaHome, FaSearch } from 'react-icons/fa';
+import { FaHome, FaSearch, FaBookMedical } from 'react-icons/fa';
 import { BsFillChatLeftTextFill } from 'react-icons/bs';
 import { AiFillBook } from 'react-icons/ai';
 import { RiAccountCircleFill } from 'react-icons/ri';
-import {Link, useLocation} from "react-router-dom"
+import {Link} from "react-router-dom"
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import Cookies from 'universal-cookie';
+import { useHistory } from 'react-router-dom'
 
 const NavBar = (props) => {
+
+    const cookies = new Cookies();
+    const history = useHistory();
+    const db = getDatabase();
+
+    const [isAdmin, setIsAdmin] = useState("")
+    // Check to make sure user is an admin
+    const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
+    onValue(user_type, (snapshot) => {
+    console.log(snapshot.val());
+        if (isAdmin == false && snapshot.val() != null && snapshot.val().toLowerCase() == "admin") {
+            setIsAdmin(true)
+        }
+    });
 
   return (
     <div className="topnav">
@@ -41,6 +58,14 @@ const NavBar = (props) => {
                 My Account
             </Link>
         </div>
+        {isAdmin && 
+            <div className="column">
+                <Link id="AdminLink" to="admin">
+                    <FaBookMedical size={23} color={props.current == "admin" ? "black" : ""}/> <br/>
+                    Add Book
+                </Link>
+            </div>
+        }
     </div>
     )
 }
