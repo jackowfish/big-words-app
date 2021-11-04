@@ -3,10 +3,10 @@ WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (fil
 WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-19:16:47.904 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-19:16:48.043 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:4874
-19:19:28.580 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
-19:19:28.587 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: bigwords-202f6-default-rtdb
-19:19:28.594 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - Stopping namespace actor for bigwords-202f6-default-rtdb
-19:19:28.595 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - Gauges removed for bigwords-202f6-default-rtdb
-19:19:28.599 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
+10:53:45.990 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+10:53:46.155 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:4874
+12:39:56.641 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+12:39:56.646 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: bigwords-202f6-default-rtdb
+12:39:56.652 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - Stopping namespace actor for bigwords-202f6-default-rtdb
+12:39:56.653 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - Gauges removed for bigwords-202f6-default-rtdb
+12:39:56.657 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.

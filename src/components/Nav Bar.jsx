@@ -20,7 +20,9 @@ const NavBar = (props) => {
     // Check to make sure user is an admin
     const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
     onValue(user_type, (snapshot) => {
-    console.log(snapshot.val());
+        if(isAdmin == false) {
+            console.log(snapshot.val());
+        }
         if (isAdmin == false && snapshot.val() != null && snapshot.val().toLowerCase() == "admin") {
             setIsAdmin(true)
         }
@@ -52,12 +54,6 @@ const NavBar = (props) => {
                 Search
             </Link>
         </div>
-        <div className="column">
-            <Link id="MyAccountLink" to="myaccount">
-                <RiAccountCircleFill size={23} color={props.current == "myaccount" ? "black" : ""}/> <br/>
-                My Account
-            </Link>
-        </div>
         {isAdmin && 
             <div className="column">
                 <Link id="AdminLink" to="admin">
@@ -66,6 +62,12 @@ const NavBar = (props) => {
                 </Link>
             </div>
         }
+        <div className="column">
+            <Link id="MyAccountLink" to="myaccount">
+                <RiAccountCircleFill size={23} color={props.current == "myaccount" ? "black" : ""}/> <br/>
+                My Account
+            </Link>
+        </div>
     </div>
     )
 }

@@ -21,6 +21,9 @@ const parseBook = (data) => {
   for(let i = 0; i < bookArr.length; i++) {
     // Remove any non alphabetic characters from word
     bookArr[i] = bookArr[i].replace(/[^A-Za-z]/g, '').toLowerCase();
+    if(bookArr[i] == '') {
+      bookArr.splice(i, 1);
+    }
     /*  
     Check to see if word exists in object
     * If yes, enumerate
@@ -50,10 +53,8 @@ exports.addBook = functions.https.onRequest(async (req, res) => {
     // Grab the text parameter.
     const text = req.query.text;
     const title = req.query.title;
-    const authorFirst = req.query.authorFirst;
-    const authorLast = req.query.authorLast;
-    const pages = req.query.pages;
-    console.log(f`Adding ${title} written by ${authorFirst} ${authorLast} to the database...`)
+    const AuthorName = req.query.AuthorName;
+    console.log(`Adding ${title} written by ${AuthorName} to the database...`)
 
     // Push the new book into Realtime Database using the Firebase Admin SDK.
     db = admin.database();
@@ -61,9 +62,7 @@ exports.addBook = functions.https.onRequest(async (req, res) => {
     // Updaate book info
     books.child(title).child("Words").set(parseBook(text))
     book = db.ref(`/Books/${title}`)
-    book.child("Author First").set(authorFirst)
-    book.child("Author Last").set(authorLast)
-    book.child("Pages").set(pages)
+    book.child("Author Name").set(AuthorName)
     // Send back a message that we've successfully written the message
-    res.json({result: `${title} by ${authorFirst} ${authorLast} successfully added to the database.`});
+    res.json({result: `${title} by ${AuthorName} successfully added to the database.`});
   });

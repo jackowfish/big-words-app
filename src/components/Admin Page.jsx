@@ -10,60 +10,71 @@ import Button from './Button'
 import useInput from "../hooks/useInput"
 import getFirebase from '../../firebase.config';
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import { useState } from "react";
 
 const AdminPage = () => {
   // Initialize dependencies
   const cookies = new Cookies();
   const history = useHistory();
-  const db = getDatabase(firebaseInstance);
   const firebaseInstance = getFirebase();
-  const functions = getFunctions(firebaseInstance);
+  const db = getDatabase(firebaseInstance);
+  let isAdmin = false;
   
   // Initialize book input variables
-  const authorFName = useInput("");
-  const authorLName = useInput("");
+  const authorName = useInput("");
   const bookText = useInput("");
   const bookName = useInput("");
   const pages = useInput("");
   const bookCover = useInput("");
   
-  // Initialize firebase cloud function
-  const addBook = httpsCallable(functions, 'addBook');
-  
+  const [isCompleted, setCompleted] = useState(false)
   //Make sure user logged in
   if(cookies.get('BigWordsUser') == null) {
-    history.push('/')
+    history.push('/');
+    window.location.reload(false);
   }
 
-  // Check to make sure user is an admin
-  const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
-  onValue(user_type, (snapshot) => {
-    console.log(snapshot.val());
-    if (snapshot.val() != null && snapshot.val().toLowerCase() !== "admin") {
-        history.push("/");
-    }
-  });
+  if (!isAdmin) {
+    // Check to make sure user is an admin
+    const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
+    onValue(user_type, (snapshot) => {
+      if (snapshot.val() != null && snapshot.val().toLowerCase() !== "admin") {
+          history.push("/homepage");
+      } else {
+        isAdmin = true;
+      }
+    });
+  }
 
   // Function to submit book data
-  const addBookDetails = () => {
-    addBook({
-      text: bookText,
-      title : bookName,
-      authorFirst: authorFName,
-      authorLast: authorLName,
-      pages: pages,
-    })
+  const addBookDetails = async () => {
+    console.log({
+      text: bookText.value,
+      title : bookName.value,
+      authorName: authorName.value,
+    });
+    if(bookText.value == ""|| bookName.value == ""|| authorName.value == "") {
+      alert('Please fill out all form fields!')
+      return
+    } else {
+      var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      fetch(`https://us-central1-bigwords-202f6.cloudfunctions.net/addBook?title=${bookName.value}&AuthorName=${authorName.value}&text=${bookText.value}`, requestOptions);
+      setCompleted(true);
+    }
   }
 
   return (
     <div className="columns is-vcentered background"> 
         <NavBar className="navbar" current="admin"/>
         <div className="column welcomeBack">
-        <p className="PageTitle"> Upload new book data!</p>
-          <input className="input adminInput" type="text" placeholder="Author First Name" {...authorFName}/>
-          <input className="input adminInput" type="text" placeholder="Author Last Name" {...authorLName}/>
+        {!isCompleted &&
+          <div>
+          <p className="PageTitle"> Upload new book data!</p>
+          <input className="input adminInput" type="text" placeholder="Author Name" {...authorName}/>
           <input className="input adminInput" type="text" placeholder="Book Name" {...bookName}/>
-          <input className="input adminInput" type="text" placeholder="Number of Pages" {...pages}/>
           {/* <div className="file">
             <label className="file-label adminInput">
               <input className="file-input" type="file" name="bookCover" {...bookCover}/>
@@ -79,9 +90,16 @@ const AdminPage = () => {
           </div> */}
           <textarea className="textarea adminInput" placeholder="Copy Book Text Here!" {...bookText}></textarea>
           <Button className="green button adminInput" name="Upload Book" onClick={addBookDetails}/>
+          </div>
+        }
+        {isCompleted &&
+          <div>
+          <p className="PageTitle"> Book Upload Successful!</p>
+          <Button className="green button adminInput" name="Upload Another Book" onClick={() => window.location.reload(false)}/>
+          </div>
+        }
         </div>
-    </div>
-    
+      </div>
     )
 }
 

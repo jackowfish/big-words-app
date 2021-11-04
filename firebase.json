@@ -10,6 +10,15 @@
     "database": {
       "host": "127.0.0.1",
       "port": "4874"
+    },
+    "functions": {
+      "port": 5001
+    },
+    "ui": {
+      "enabled": true
+    },
+    "auth": {
+      "port": 9099
     }
   },
   "database": {
