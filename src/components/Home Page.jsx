@@ -14,7 +14,8 @@ const HomePage = () => {
   const db = getDatabase();
   
   if(cookies.get('BigWordsUser') == null) {
-    history.push('/')
+    history.push('/');
+    window.location.reload(false);
   }
 
 

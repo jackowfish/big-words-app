@@ -12,7 +12,8 @@ const MyWords = () => {
     const history = useHistory();
 
     if(cookies.get('BigWordsUser') == null) {
-        history.push('/')
+        history.push('/');
+        window.location.reload(false);
     }
 
     return (

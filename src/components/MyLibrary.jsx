@@ -14,7 +14,8 @@ const MyLibrary = () => {
     const history = useHistory();
 
     if(cookies.get('BigWordsUser') == null) {
-        history.push('/')
+        history.push('/');
+        window.location.reload(false);
     }
 
     const current_uid = cookies.get('BigWordsUser').user.uid;

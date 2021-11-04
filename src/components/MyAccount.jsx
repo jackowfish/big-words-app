@@ -16,20 +16,23 @@ import { getAuth, signOut } from '@firebase/auth';
 const MyAccount = () => {
     const cookies = new Cookies();
     const history = useHistory();
-    
+    const auth = getAuth();
+
     if(cookies.get('BigWordsUser') == null) {
-        history.push('/')
+        history.push('/');
+        window.location.reload(false);
     }
 
     const logout = async (event) => {
         event.preventDefault();
 
-        const auth = getAuth();
         signOut(auth).then(() => {
+            cookies.remove('BigWordsUser');
+            history.push('/');
+            window.location.reload(false);
         }).catch((error) => {
-
+            alert("Error signing out of BigWords. Try Again!");
         });
-
     }
 
 

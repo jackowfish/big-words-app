@@ -13,6 +13,7 @@ import MyAccount from './components/MyAccount'
 import Search from './components/Search'
 import BookInfo from './components/BookInfo'
 import EditPage  from './components/EditPage';
+import AdminPage from './components/Admin Page';
 
 import { HashRouter as Router, Switch, Route} from "react-router-dom";
 import { getAnalytics } from "firebase/analytics";
@@ -47,6 +48,9 @@ ReactDOM.render(
           </Route>
           <Route path="/myaccount">
             <MyAccount />
+          </Route>
+          <Route path="/admin">
+            <AdminPage />
           </Route>
           
           {/* Testing Book Info Page Remove/Update Later */}
