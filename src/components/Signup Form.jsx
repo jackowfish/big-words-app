@@ -53,12 +53,12 @@ const SignUpForm = () => {
         <div className="column signupform">
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="Caregiver First Name" {...first_name}/>
+              <input className="input caregiverFirst" type="text" placeholder="Caregiver First Name" {...first_name}/>
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="Caregiver Last Name" {...last_name}/>
+              <input className="input caregiverLast" type="text" placeholder="Caregiver Last Name" {...last_name}/>
             </div>
           </div>
           {/* <div className="field">
@@ -73,17 +73,17 @@ const SignUpForm = () => {
           </div> */}
           <div className="field">
             <div className="control">
-              <input className="input" type="email" placeholder="Email" {...email}/>
+              <input className="input email" type="email" placeholder="Email" {...email}/>
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="password" placeholder="Password" {...password}/>
+              <input className="input password" type="password" placeholder="Password" {...password}/>
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="password" placeholder="Confirm Password"/>
+              <input className="input passwordConfirm" type="password" placeholder="Confirm Password"/>
             </div>
           </div>
           <Button type="submit" className="yellow button" name="Sign Up" onClick={signUp}/>

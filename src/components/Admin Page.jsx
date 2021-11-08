@@ -73,8 +73,8 @@ const AdminPage = () => {
         {!isCompleted &&
           <div>
           <p className="PageTitle"> Upload new book data!</p>
-          <input className="input adminInput" type="text" placeholder="Author Name" {...authorName}/>
-          <input className="input adminInput" type="text" placeholder="Book Name" {...bookName}/>
+          <input className="input adminInput" type="text author" placeholder="Author Name" {...authorName}/>
+          <input className="input adminInput" type="text book" placeholder="Book Name" {...bookName}/>
           {/* <div className="file">
             <label className="file-label adminInput">
               <input className="file-input" type="file" name="bookCover" {...bookCover}/>
@@ -88,7 +88,7 @@ const AdminPage = () => {
               </span>
             </label>
           </div> */}
-          <textarea className="textarea adminInput" placeholder="Copy Book Text Here!" {...bookText}></textarea>
+          <textarea className="textarea adminInput bookText" placeholder="Copy Book Text Here!" {...bookText}></textarea>
           <Button className="green button adminInput" name="Upload Book" onClick={addBookDetails}/>
           </div>
         }

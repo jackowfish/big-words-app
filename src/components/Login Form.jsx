@@ -42,12 +42,12 @@ const LoginForm = () => {
         <div className="column loginForm">
           <div className="field">
             <div className="control">
-              <input className="input" type="email" placeholder="Email" {...email}/>
+              <input className="input email" type="email" placeholder="Email" {...email}/>
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="password" placeholder="Password" {...password}/>
+              <input className="input password" type="password" placeholder="Password" {...password}/>
             </div>
           </div>
           <Button type="submit" className="green button" name="Log In" onClick={login}/>
