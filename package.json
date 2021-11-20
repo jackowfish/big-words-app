@@ -27,7 +27,12 @@
     "vite": "^2.5.4"
   },
   "nyc": {
-    "extension": [".js", ".jsx"],
-    "all": [true]
+    "extension": [
+      ".js",
+      ".jsx"
+    ],
+    "all": [
+      true
+    ]
   }
 }

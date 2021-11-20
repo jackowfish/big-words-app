@@ -1,65 +1,90 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
-import "bulma/css/bulma.css";
-import {AiOutlinePlusCircle} from 'react-icons/ai'
+import {AiOutlinePlusCircle} from 'react-icons/ai';
+import Cookies from 'universal-cookie';
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import useInput from "../../hooks/useInput";
+import Modal from "../../hooks/modal";
 
-class ListenerModal extends React.Component {
-  state = {
-    isModal: false
-  };
 
-  handleClick = () => {
-    this.setState({ isModal: !this.state.isModal });
-  };
 
-  render() {
-    const active = this.state.isModal ? "is-active" : "";
-    return (
-      <div className="App">
-        <div className={`modal ${active}`}>
-          <div className="modal-background" />
-          <div className="modal-card">
-            <header className="modal-card-head">
-              <p className="modal-card-title">Add New Listener</p>
-              <button
-                onClick={this.handleClick}
-                className="delete"
-                aria-label="close"
-              />
-            </header>
-            <section className="modal-card-body">
-              <div className="field">
-                <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Child First Name"
-                  />
-                </div>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input" type="text" placeholder="Child Last Name"/>
-                </div>
-              </div>
-            </section>
-            <footer className="modal-card-foot">
-              <button className="button is-success">Add Listener</button>
-              <button onClick={this.handleClick} className="button">
-                Cancel
-              </button>
-            </footer>
-          </div>
-        </div>
-
-        <button onClick={this.handleClick}>
-          <AiOutlinePlusCircle size={20}/>
-        </button>
-      </div>
-    );
-  }
+const ListenerModal = () => {
+  const cookies = new Cookies();
+  const db = getDatabase();
+  
+  const add_listener = async (event) => {
+    //event.preventDefault();
+    const newChild = push(ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid + "/Children/"));
+    const childId = newChild.key;
+    
+    set(ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid + "/Children/" + childId),{
+    "First Name": first_name.value,
+    "Last Name": last_name.value,
+    "Books Read" : "",
+  });
+  openModal(event);
 }
 
-export default ListenerModal;
+  const first_name = useInput("")
+  const last_name = useInput("")
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = (event) => {
+    event.preventDefault();
+    setShowModal(prev => !prev)
+  }
+
+  return(
+    <div className="App">
+        <button
+        onClick={openModal}>
+          <AiOutlinePlusCircle size={20}/>
+        </button>
+        <Modal
+        showModal ={showModal}
+        setShowModal={setShowModal}
+        modalInfo={
+            <div className="modal-background">
+              <div className="modal-card">
+                <header className="modal-card-head">
+                  <p className="modal-card-title">Add New Listener</p>
+                  <button 
+                  className="delete"
+                  onClick={openModal}
+                  aria-label="close"/>
+                </header>
+                <section className="modal-card-body">
+                  <div className="field">
+                    <div className="control">
+                      <input 
+                      type="text" 
+                      className="input"
+                      placeholder="Listener First Name"
+                      {...first_name} />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <div className="control">
+                      <input 
+                      type="text" 
+                      className="input" 
+                      placeholder="Listener Last Name"
+                      {...last_name}/>
+                    </div>
+                  </div>
+                </section>
+                <footer className="modal-card-foot">
+                  <button className="button is-success" onClick={add_listener}>Add Listener</button>
+                  <button className="button" onClick={openModal}>Cancel</button>
+                </footer>
+              </div>
+            </div>
+        }/>
+    </div> 
+  )
+
+}
+
+export default ListenerModal
 
  

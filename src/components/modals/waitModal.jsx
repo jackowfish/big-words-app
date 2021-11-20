@@ -1,54 +1,61 @@
-import React from "react";
+import { getDatabase, ref, onValue, remove } from "firebase/database";
+import Cookies from 'universal-cookie';
+import React, {useState, useHistory} from "react";
 import ReactDOM from "react-dom";
-import "bulma/css/bulma.css";
-import {AiOutlinePlusCircle} from 'react-icons/ai'
+import Modal from "../../hooks/modal";
 
-class WaitModal extends React.Component {
-  state = {
-    isModal: false
-  };
 
-  handleClick = () => {
-    this.setState({ isModal: !this.state.isModal });
-  };
+const WaitModal = (props) => {
+  const cookies = new Cookies();
+  const db = getDatabase();
+  const [showModal, setShowModal] = useState(false)
+  const type = (props.data.type)
+  const name = (props.data.name)
 
-  render() {
-    const active = this.state.isModal ? "is-active" : "";
-    return (
-      <div className="App">
-        <div className={`modal ${active}`}>
-          <div className="modal-background" />
+  const openModal = (event) => {
+    event.preventDefault();
+    setShowModal(prev => !prev)
+  }
+
+  const delete_data = async (event) =>{
+    event.preventDefault();
+    remove(ref(db,props.data.id));
+    openModal(event);
+  }
+
+  return(
+    <div className = "App">
+      <button className="button is-danger" onClick={openModal}>Delete {type} </button>
+      <Modal
+      showModal={showModal}
+      setShowModal={setShowModal}
+      modalInfo={
+        <div className="modal-background">
           <div className="modal-card">
             <header className="modal-card-head">
-              <p className="modal-card-title">Remove [Attribute]?</p>
+              <p className="modal-card-title"> Remove {type}?</p>
               <button
-                onClick={this.handleClick}
-                className="delete"
-                aria-label="close"
-              />
+              onClick={openModal}
+              className="delete"
+              aria-label="close"/>
             </header>
             <section className="modal-card-body">
-                <h1>You are about to remove the [attribute]</h1> 
-                <h1>[First] [Last]</h1>
-                <p>Completing this action will remove all of this listener's Information
-                    from your account forever.
-                </p>
+              <h1>You are about to remove {type}</h1>
+              <h1> <b>{name}</b></h1>
+              <p>Completing this action will remove all of this {type}'s 
+                information from your account forever.
+              </p>
             </section>
             <footer className="modal-card-foot">
-              <button className="button is-success">Yes, Remove Listener</button>
-              <button onClick={this.handleClick} className="button">
-                Cancel
-              </button>
+              <button className="button is-success" onClick={delete_data}>Yes, Remove {type}</button>
+              <button className="button" onClick={openModal}>Cancel</button>
             </footer>
           </div>
         </div>
-
-        <button onClick={this.handleClick}>
-          Remove Listener
-        </button>
-      </div>
-    );
-  }
+      }
+      />
+    </div>
+  )
 }
 
 export default WaitModal;

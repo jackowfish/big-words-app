@@ -23,6 +23,7 @@ import getFirebase from '../firebase.config';
 const app = getFirebase();
 
 const analytics = getAnalytics(app);
+// const {path} = useRouteMatch();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -48,6 +49,7 @@ ReactDOM.render(
           </Route>
           <Route path="/myaccount">
             <MyAccount />
+
           </Route>
           <Route path="/admin">
             <AdminPage />
@@ -57,7 +59,7 @@ ReactDOM.render(
           <Route path="/bookinfo">
             <BookInfo />
           </Route>
-          <Route path="/editpage"><EditPage/></Route>
+          <Route path={"/edit"} component={EditPage}/>
           
           <Route path ="/">
             <StartPage />

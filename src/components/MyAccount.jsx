@@ -4,13 +4,15 @@ import NavBar from './Nav Bar'
 import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom'
 import Button from './Button'
-import {Link} from "react-router-dom"
+import {HashRouter as Router,Route, Link, Switch} from "react-router-dom"
 import '../styles/MyAccount.css'
-import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {BsChevronRight} from 'react-icons/bs'
-// import ListenerModal from './modals/listenerModal';
-// import ReaderModal from './modals/readerModal';
+import ListenerModal from './modals/listenerModal';
+import ReaderModal from './modals/readerModal';
 import { getAuth, signOut } from '@firebase/auth';
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import TableBuilder from'./tableBuilder';
+import EditPage from './editPage';
 
 
 const MyAccount = () => {
@@ -35,6 +37,20 @@ const MyAccount = () => {
         });
     }
 
+    const db = getDatabase();
+
+    var user_first_name = "";
+    const f_info = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/First Name");
+    onValue(f_info, (snapshot) => {
+    user_first_name = snapshot.val();
+    });
+
+    var user_last_name = "";
+    const l_info = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Last Name");
+    onValue(l_info, (snapshot) => {
+    user_last_name = snapshot.val();
+    });
+
 
     return (
       <div className="columns is-vcentered background"> 
@@ -52,11 +68,14 @@ const MyAccount = () => {
                   <tbody>
                     <tr>
                         <td>Name</td>
-                        <td>[First] [Last]</td>
+                        <td>{user_first_name} {user_last_name}</td>
                         <td>
-                            <Link id="editPage" to="editpage">
-                                <BsChevronRight size={15}/>
-                            </Link>
+                         <Link to={{pathname:'/edit',
+                            search: `?sort=${cookies.get('BigWordsUser').user.uid}`,
+                            data:{
+                                id: `${'Users/' + cookies.get('BigWordsUser').user.uid}`,
+                                type: 'Caregiver'
+                            }}}><BsChevronRight size={20}/></Link>
                         </td>
                     </tr>
                   </tbody>
@@ -64,32 +83,30 @@ const MyAccount = () => {
                       <tr>
                           <th>Reader Information</th>
                           <th></th>
-                          {/* <th><ReaderModal/></th> */}
+                          <th>
+                            <ReaderModal/>
+                              </th>
                       </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                        <td>Reader 1</td>
-                        <td>[Name]</td>
-                        <td><BsChevronRight size={20}/></td>
-                    </tr>
-                  </tbody>
+                  
+                    <TableBuilder name="Reader"
+                        data={"Users/" + cookies.get('BigWordsUser').user.uid + "/Readers/"}
+                    />
+                  
                   <thead>
                       <tr>
                           <th>Listener Information</th>
                           <th></th>
                           <th>
-                                {/* <ListenerModal/> */}
+                                <ListenerModal/>
                             </th>
                       </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                        <td>Listener 1</td>
-                        <td>[First] [Last]</td>
-                        <td><BsChevronRight size={15}/></td>
-                    </tr>
-                  </tbody>
+                  
+                    <TableBuilder name="Listener"
+                    data={"Users/" + cookies.get('BigWordsUser').user.uid + "/Children/"}
+                    />
+                  
                   
               </table>
             <Link id="LogoutLink" to="/">
