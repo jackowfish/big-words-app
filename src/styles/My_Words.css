@@ -1,16 +1,17 @@
 .listener_name_section {
     background-color: white;
     margin-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 10px;
     text-align: left;
     box-shadow: 1px 3px 2px darkslategray;
+    
 }
 
 .listener_name {
     font-weight: bold;
-    font-size: 28px;
+    font-size: 25px;
     color: black;
     padding: 8px;
 }
@@ -18,8 +19,8 @@
 .bigWords_section {
     background-color: #FFC857;
     margin-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
@@ -44,8 +45,8 @@
 .allWords_section {
     background-color: #FFC857;
     margin-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
@@ -84,4 +85,25 @@
 .current_count {
     float: right;
     padding-right: 8px;
+}
+
+p {
+    text-align: center;
+    color: black;
+    font-size: 13px;
+}
+
+button {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.listener {
+    font-size: 15px;
+    float: right;
+    margin-top: 3px;
 }

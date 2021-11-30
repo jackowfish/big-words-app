@@ -4,49 +4,201 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import 'bulma/css/bulma.min.css';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import Cookies from 'universal-cookie';
+import { render } from 'react-dom';
 
-const BigWords = () => {
+class BigWords extends React.Component {
+    constructor(props) {
+        super();
+        this.db = getDatabase();
+        this.cookies = new Cookies();
+        this.state = {
+            books_array: [],
+            words_array: [],
+            word_count_array: [],
+            components_array: [],
+            child: props.child,
+            sorted: "A_Z",
+            loaded: false
+        };
+    }
 
-    const words_array = [];
-    const db = getDatabase();
-    const book_list = ref(db, 'Books/');
-    const cookies = new Cookies();
-
-    onValue(book_list, (snapshot) => {
-        const book_list_data = snapshot.val();
-  
-      for (const current_book in book_list_data) {
-        const check_book_status = ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid + "/Books Read/" + `${current_book}`);
-          onValue(check_book_status, (snapshot) => {
-            if (snapshot.val() != null && snapshot.val() > 0) {
-                const word_list = ref(db, 'Books/' + `${current_book}` + '/Words/');
-            onValue(word_list, (snapshot) => {
-                const word_list_data = snapshot.val();
-                for (var word in word_list_data) {
-                    const word_info = ref(db, 'Books/' + `${current_book}` + '/Words/' + word);
-                    onValue(word_info, (snapshot) => {
-                        const word_data = snapshot.val();
-                        if (word_data.bigword == true) {
-                            const current_word = word + "_" + word_data.count;
-                            words_array.push(<Word key={word} name={current_word}/>);
-                        }
-                    });
-                }
-            });
+    static getDerivedStateFromProps(nextProps, prevState) {
+        const books_array = [];
+        const words_array = [];
+        const word_count_array = [];
+        const components_array = [];
+        const db = getDatabase();
+        const cookies = new Cookies();
+        const child_book_list = ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid + "/Children/" + nextProps.child + "/Books Read");
+        onValue(child_book_list, (snapshot) => {
+            for (var book in snapshot.val()) {
+                books_array.push(book);
+                const book_data = ref(db, "Books/" + book + "/Words");
+                onValue(book_data, (snapshot) => {
+                    for (var word in snapshot.val()) {
+                        const word_data = ref(db, "Books/" + book + "/Words/" + word);
+                        onValue(word_data, (snapshot) => {
+                            const word_info = snapshot.val();
+                            if (words_array.includes(word.toLowerCase())) {
+                                var index = words_array.indexOf(word.toLowerCase());
+                                const current = word_count_array[index];
+                                const current_count = current[1];
+                                var new_count = current_count + word_info.count;
+                                word_count_array[index] = [word.toLowerCase(),new_count];
+                            } else {
+                                words_array.push(word);
+                                word_count_array.push([word.toLowerCase(),word_info.count]);
+                            }
+                        })
+                    }
+                })
             }
         });
-        }
-    });
 
-    return (
-    <div className="column bigWords_section">
-        <h1 className="bigwords_title">Big Words</h1>
-        <div className = "column bigWords_list">
-            {words_array}
+        for (var i = 0; i < word_count_array.length; i++) {
+            const current = word_count_array[i];
+            components_array.push(<Word key={current[0] + "_" + current[1]} word={current[0]} count={current[1]}/>)
+        }
+
+        return {
+            child: nextProps.child,
+            books_array: books_array,
+            words_array: words_array,
+            word_count_array: word_count_array,
+            components_array: components_array
+        }
+    }
+
+    componentDidMount() {
+        this.render_data();
+    }
+    
+    render_data() {
+        setTimeout(() => {
+            this.setState({
+                loaded: true
+            })
+        }, 100);
+        this.sort_AZ();
+    }
+
+
+    sort_AZ = () => {
+        let a_z_button = document.getElementById("a_z_button_big");
+        let z_a_button = document.getElementById("z_a_button_big");
+        let most_button = document.getElementById("most_button_big");
+        let least_button = document.getElementById("least_button_big");
+        a_z_button.style.backgroundColor = "#FF932F"
+        z_a_button.style.backgroundColor = "white"
+        most_button.style.backgroundColor = "white"
+        least_button.style.backgroundColor = "white"
+
+
+        // const to_sort = this.state.components_array;
+        // to_sort.sort(function (a, b) {
+        //     return a[0] - b[0];
+        // });
+        // this.setState({
+        //     word_count_array: to_sort
+        // })
+
+        this.setState({
+            sorted: "A_Z"
+        });
+
+    }
+
+    sort_ZA = () => {
+        let a_z_button = document.getElementById("a_z_button_big");
+        let z_a_button = document.getElementById("z_a_button_big");
+        let most_button = document.getElementById("most_button_big");
+        let least_button = document.getElementById("least_button_big");
+        a_z_button.style.backgroundColor = "white";
+        z_a_button.style.backgroundColor = "#FF932F";
+        most_button.style.backgroundColor = "white";
+        least_button.style.backgroundColor = "white";
+
+        // const to_sort = this.state.word_count_array;
+        // to_sort.sort(function (a, b) {
+        //     return b[0] - a[0];
+        // });
+        // this.setState({
+        //     word_count_array: to_sort
+        // })
+
+        this.setState({
+            sorted: "Z_A"
+        });
+
+    }
+
+    sort_most = () => {
+        let a_z_button = document.getElementById("a_z_button_big");
+        let z_a_button = document.getElementById("z_a_button_big");
+        let most_button = document.getElementById("most_button_big");
+        let least_button = document.getElementById("least_button_big");
+        a_z_button.style.backgroundColor = "white"
+        z_a_button.style.backgroundColor = "white"
+        most_button.style.backgroundColor = "#FF932F"
+        least_button.style.backgroundColor = "white"
+
+        // const to_sort = this.state.word_count_array;
+        // const components_array = [];
+        // to_sort.sort(function (a, b) {
+        //     return b[1] - a[1];
+        // });
+        // for (var i = 0; i < to_sort.length; i++) {
+        //     const current = to_sort[i];
+        //     components_array.push(<Word key={current[0]} word={current[0]} count={current[1]}/>)
+        // }
+        // this.setState({
+        //     words_array: to_sort,
+        //     sorted: "most", 
+        //     components_array: components_array
+        // })
+    }
+
+    sort_least = () => {
+        let a_z_button = document.getElementById("a_z_button_big");
+        let z_a_button = document.getElementById("z_a_button_big");
+        let most_button = document.getElementById("most_button_big");
+        let least_button = document.getElementById("least_button_big");
+        a_z_button.style.backgroundColor = "white"
+        z_a_button.style.backgroundColor = "white"
+        most_button.style.backgroundColor = "white"
+        least_button.style.backgroundColor = "#FF932F"
+
+        const to_sort = this.state.word_count_array;
+        to_sort.sort(function (a, b) {
+            return a[1] - b[1];
+        });
+        this.setState({
+            word_count_array: to_sort
+        })
+
+        this.setState({
+            sorted: "least"
+        });
+    }
+    
+    render() {
+        return (
+        <div className="column bigWords_section">
+            <h1 className="bigwords_title">Big Words</h1>
+            <p>
+                Sort by:
+                    <button className="a_z_button_big" id="a_z_button_big" onClick={this.sort_AZ}>A-Z</button>
+                    <button className="z_a_button_big" id="z_a_button_big" onClick={this.sort_ZA}>Z-A</button>
+                    <button className="most_button_big" id="most_button_big" onClick={this.sort_most}>Most Heard</button>
+                    <button className="least_button_big" id="least_button_big" onClick={this.sort_least}>Least Heard</button>
+            </p> 
+            <div className = "column bigWords_list">
+                {this.state.loaded ? this.state.components_array : null}
+            </div>
         </div>
-    </div>
-      
-      )
-  }
+        
+        )
+    }
+    }
   
   export default BigWords;      

@@ -21,7 +21,7 @@ const NavBar = (props) => {
     const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
     onValue(user_type, (snapshot) => {
         if(isAdmin == false) {
-            console.log(snapshot.val());
+            //console.log(snapshot.val());
         }
         if (isAdmin == false && snapshot.val() != null && snapshot.val().toLowerCase() == "admin") {
             setIsAdmin(true)
