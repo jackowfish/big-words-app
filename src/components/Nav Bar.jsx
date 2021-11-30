@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.min.css';
 import '../styles/Nav_Bar.css'
 import { FaHome, FaSearch, FaBookMedical } from 'react-icons/fa';
@@ -19,6 +19,24 @@ const NavBar = (props) => {
     const [isAdmin, setIsAdmin] = useState("");
     const [sizeDiff, setSizeDiff] = useState(0);
     const [adminClass, setAdminClass] = useState("column");
+
+    // This is to check if a window is mobile or not
+    const [width, setWidth] = useState(window.innerWidth);
+    let isMobile = (width <= 500);
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+        if(isMobile) {
+            setSizeDiff(5);
+            setAdminClass("column admin");
+        }
+    }
     // Check to make sure user is an admin
     const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
     onValue(user_type, (snapshot) => {
@@ -27,8 +45,10 @@ const NavBar = (props) => {
         }
         if (isAdmin == false && snapshot.val() != null && snapshot.val().toLowerCase() == "admin") {
             setIsAdmin(true);
-            setSizeDiff(5);
-            setAdminClass("column admin");
+            if(isMobile) {
+                setSizeDiff(5);
+                setAdminClass("column admin");
+            }
         }
     });
 
