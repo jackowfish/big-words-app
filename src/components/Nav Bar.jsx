@@ -16,7 +16,9 @@ const NavBar = (props) => {
     const history = useHistory();
     const db = getDatabase();
 
-    const [isAdmin, setIsAdmin] = useState("")
+    const [isAdmin, setIsAdmin] = useState("");
+    const [sizeDiff, setSizeDiff] = useState(0);
+    const [adminClass, setAdminClass] = useState("column");
     // Check to make sure user is an admin
     const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
     onValue(user_type, (snapshot) => {
@@ -24,47 +26,49 @@ const NavBar = (props) => {
             console.log(snapshot.val());
         }
         if (isAdmin == false && snapshot.val() != null && snapshot.val().toLowerCase() == "admin") {
-            setIsAdmin(true)
+            setIsAdmin(true);
+            setSizeDiff(5);
+            setAdminClass("column admin");
         }
     });
 
   return (
     <div className="topnav">
-        <div className="column">
+        <div className={adminClass}>
             <Link id="HomepageLink" to="homepage">
-                <FaHome size={23} color={props.current == "homepage" ? "black" : ""}/> <br/>
+                <FaHome size={23 - sizeDiff} color={props.current == "homepage" ? "black" : ""}/> <br/>
                 Home
             </Link>
         </div>
-        <div className="column">
+        <div className={adminClass}>
             <Link id="MyWordsLink" to="mywords">
-                <BsFillChatLeftTextFill size={21} color={props.current == "mywords" ? "black" : ""}/> <br/>
+                <BsFillChatLeftTextFill size={21 - sizeDiff} color={props.current == "mywords" ? "black" : ""}/> <br/>
                 My Words
             </Link>
         </div>
-        <div className="column">
+        <div className={adminClass}>
             <Link id="MyLibraryLink" to="mylibrary">
-                <AiFillBook size={20} color={props.current == "mylibrary" ? "black" : ""}/> <br/>
+                <AiFillBook size={20 - sizeDiff} color={props.current == "mylibrary" ? "black" : ""}/> <br/>
                 My Library
             </Link>
         </div>
-        <div className="column">
+        <div className={adminClass}>
             <Link id="SearchLink" to="search">
-                <FaSearch size={21} color={props.current == "search" ? "black" : ""}/> <br/>
+                <FaSearch size={21 - sizeDiff} color={props.current == "search" ? "black" : ""}/> <br/>
                 Search
             </Link>
         </div>
         {isAdmin && 
-            <div className="column">
+            <div className={adminClass}>
                 <Link id="AdminLink" to="admin">
-                    <FaBookMedical size={23} color={props.current == "admin" ? "black" : ""}/> <br/>
+                    <FaBookMedical size={23 - sizeDiff} color={props.current == "admin" ? "black" : ""}/> <br/>
                     Add Book
                 </Link>
             </div>
         }
-        <div className="column">
+        <div className={adminClass}>
             <Link id="MyAccountLink" to="myaccount">
-                <RiAccountCircleFill size={23} color={props.current == "myaccount" ? "black" : ""}/> <br/>
+                <RiAccountCircleFill size={23 - sizeDiff} color={props.current == "myaccount" ? "black" : ""}/> <br/>
                 My Account
             </Link>
         </div>

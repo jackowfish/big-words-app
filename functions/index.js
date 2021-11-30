@@ -1,20 +1,34 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
+const https = require('https');
 const fs = require('fs');
 
 admin.initializeApp();
-// https://bigwords-202f6-default-rtdb.firebaseio.com/Books
+
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const download = async (url, dest) => {
+  var file = fs.createWriteStream(dest);
+  https.get(url, function(response) {
+    response.pipe(file);
+    file.on('finish', function() {
+      file.close();
+      return("finish")
+    });
+  });
+}
 
 const parseList = (listTitle) => {
   data = fs.readFileSync(listTitle, 'utf8');
   return data.split('\n');
 }
 
-const parseBook = (data) => { 
-//   // Grab list of most common words
+const parseBook = () => { 
+  const filePath = "/tmp/book.txt";
+  // Grab list of most common words
   commonWords = parseList('most_common_words.txt')
-//   // Read data from book file
-//   data = fs.readFileSync(bookTitle, 'utf8');
+  // Read data from book file
+  data = fs.readFileSync(filePath, 'utf8');
   let bookObject = new Object();
   // Split file by spaces into Array
   bookArr = data.toLowerCase().split(' ');
@@ -50,7 +64,6 @@ const parseBook = (data) => {
     }  
   }
   return bookObject;
-  // return bookObject;
 } 
 
 exports.addBook = functions.https.onRequest(async (req, res) => {
@@ -59,31 +72,21 @@ exports.addBook = functions.https.onRequest(async (req, res) => {
     const title = req.query.title;
     const AuthorName = req.query.AuthorName;
     console.log(`Adding ${title} written by ${AuthorName} to the database...`)
-
     // Push the new book into Realtime Database using the Firebase Admin SDK.
     db = admin.database();
-    books = db.ref('/Books');
-    // Updaate book info
-    let words = parseBook(text);
-    Object.keys(words).forEach((k) => words[k] == "" && delete words[k]);
-    books.child(title).child("Words").set(parseBook(text))
-    book = db.ref(`/Books/${title}`)
-    book.child("Author Name").set(AuthorName)
+    book = db.ref(`/Books/${text}`);
+    book.child("Author Name").set(AuthorName);
+    book.child("Title").set(title);
+    const filePath = "/tmp/book.txt";
+    let url = `https://firebasestorage.googleapis.com/v0/b/bigwords-202f6.appspot.com/o/bookTexts%2F${text}?alt=media`
+    download(url, filePath);
+    // Can't get download working right, but tested with extremely large book with 10s delay and works fine.
+    await delay(10000);
+    words = parseBook();
+    if ("" in words) {
+      delete words[""];
+    };
+    book.child("Words").set(words);
     // Send back a message that we've successfully written the message
     res.json({result: `${title} by ${AuthorName} successfully added to the database.`});
-  });
-
-  const manuallyAddBook = (req) => {
-    return {
-      "title": req.title,
-      "Author Name": req.AuthorName,
-      "Words": parseBook(req.text)
-    }
-  }
-
-  // var stream = fs.createWriteStream("Aladdin And the Magic Lamp.json");
-  // stream.once('open', function(fd) {
-  //   stream.write(JSON.stringify(manuallyAddBook(req)));
-  //   stream.end();
-  // });
-
+});

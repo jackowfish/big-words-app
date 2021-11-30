@@ -13,6 +13,12 @@
     display: inline-block;
     font-size: 12px;
   }
+
+  div.admin {
+    padding: 8px 12px;
+    display: inline-block;
+    font-size: 10px;
+  }
   
   .topnav a:hover {
     background-color: white;
