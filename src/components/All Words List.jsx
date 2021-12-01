@@ -39,15 +39,17 @@ class AllWords extends React.Component {
                         const word_data = ref(db, "Books/" + book + "/Words/" + word);
                         onValue(word_data, (snapshot) => {
                             const word_info = snapshot.val();
-                            if (words_array.includes(word.toLowerCase())) {
-                                var index = words_array.indexOf(word.toLowerCase());
-                                const current = word_count_array[index];
-                                const current_count = current[1];
-                                var new_count = current_count + word_info.count;
-                                word_count_array[index] = [word.toLowerCase(),new_count];
-                            } else {
-                                words_array.push(word);
-                                word_count_array.push([word.toLowerCase(),word_info.count]);
+                            if (word_info !== null) {
+                                if (words_array.includes(word.toLowerCase())) {
+                                    var index = words_array.indexOf(word.toLowerCase());
+                                    const current = word_count_array[index];
+                                    var current_count = current[1];
+                                    var new_count = current_count + word_info.count;
+                                    word_count_array[index] = [word.toLowerCase(),new_count];
+                                } else {
+                                    words_array.push(word);
+                                    word_count_array.push([word.toLowerCase(),word_info.count]);
+                                }
                             }
                         })
                     }
@@ -55,9 +57,50 @@ class AllWords extends React.Component {
             }
         });
 
-        for (var i = 0; i < word_count_array.length; i++) {
-            const current = word_count_array[i];
-            components_array.push(<Word key={current[0] + "_" + current[1]} word={current[0]} count={current[1]}/>)
+        if (prevState.sorted === "least") {
+            const to_sort = word_count_array;
+            to_sort.sort((a,b) => a[1] - b[1]);
+            for (var i = 0; i < to_sort.length; i++) {
+                const current = to_sort[i];
+                components_array.push(<Word key={current[0] + "_" + current[1]} word={current[0]} count={current[1]}/>)
+            }
+        } else if (prevState.sorted === "most") {
+            const to_sort = word_count_array;
+            to_sort.sort((a,b) => b[1] - a[1]);
+            for (var i = 0; i < to_sort.length; i++) {
+                const current = to_sort[i];
+                components_array.push(<Word key={current[0] + "_" + current[1]} word={current[0]} count={current[1]}/>)
+            }
+        } else if (prevState.sorted == "Z_A") {
+            const to_sort = word_count_array;
+            to_sort.sort(function(a,b) {
+                if (a[0] > b[0]) {
+                    return -1;
+                } else if (a[0] < b[0]) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            for (var i = 0; i < to_sort.length; i++) {
+                const current = to_sort[i];
+                components_array.push(<Word key={current[0] + "_" + current[1]} word={current[0]} count={current[1]}/>)
+            }
+        } else {
+            const to_sort = word_count_array;
+            to_sort.sort(function(a,b) {
+                if (a[0] < b[0]) {
+                    return -1;
+                } else if (a[0] > b[0]) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            for (var i = 0; i < to_sort.length; i++) {
+                const current = to_sort[i];
+                components_array.push(<Word key={current[0] + "_" + current[1]} word={current[0]} count={current[1]}/>)
+            }
         }
 
         return {
@@ -78,7 +121,7 @@ class AllWords extends React.Component {
             this.setState({
                 loaded: true
             })
-        }, 100);
+        }, 50);
         this.sort_AZ();
     }
 
@@ -93,6 +136,10 @@ class AllWords extends React.Component {
         most_button.style.backgroundColor = "white"
         least_button.style.backgroundColor = "white"
 
+        this.setState({
+            sorted: "A_Z"
+        })
+
     }
 
     sort_ZA = () => {
@@ -104,6 +151,10 @@ class AllWords extends React.Component {
         z_a_button.style.backgroundColor = "#FF932F";
         most_button.style.backgroundColor = "white";
         least_button.style.backgroundColor = "white";
+
+        this.setState({
+            sorted: "Z_A"
+        })
 
 
     }
@@ -118,6 +169,10 @@ class AllWords extends React.Component {
         most_button.style.backgroundColor = "#FF932F"
         least_button.style.backgroundColor = "white"
 
+        this.setState({
+            sorted: "most"
+        })
+
     }
 
     sort_least = () => {
@@ -129,6 +184,10 @@ class AllWords extends React.Component {
         z_a_button.style.backgroundColor = "white"
         most_button.style.backgroundColor = "white"
         least_button.style.backgroundColor = "#FF932F"
+
+        this.setState({
+            sorted: "least"
+        })
 
     }
     

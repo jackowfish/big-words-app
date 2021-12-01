@@ -4,12 +4,11 @@ import 'bulma/css/bulma.min.css';
 import '../styles/Home_Page.css'
 import NavBar from './Nav Bar'
 import Cookies from 'universal-cookie';
-import { useHistory } from 'react-router-dom'
 import Button from './Button'
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 
 class HomePage extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.db = getDatabase();
@@ -93,11 +92,11 @@ class HomePage extends React.Component {
           <div className="column welcomeBack">
             <h1 className="welcomeText">Welcome Back<br></br>{this.state.first_name}<br></br></h1>
               <hr></hr>
-              {this.state.loaded ? <h1 className="bookDataText">Word Count: {this.state.word_count}<br></br>Big Word Count: {this.state.big_word_count}</h1> : <h1 className="bookDataText">Loading...</h1>}
+              {this.state.loaded ? <h1 className="bookDataText">Word Count: {this.state.word_count}<br></br>Big Word Count: {this.state.big_word_count}</h1> : <h1 className="bookDataText"></h1>}
               <Link id="LogBooksButton" to="search">
                 <Button className="yellow button" name="Log Books"/>
               </Link>
-            <h1 className="previousText">Previously Read...</h1>
+            {/* <h1 className="previousText">Previously Read...</h1> */}
           </div>
       </div>
       
