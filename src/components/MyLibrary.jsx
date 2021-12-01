@@ -3,11 +3,10 @@ import 'bulma/css/bulma.min.css';
 import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom'
 import NavBar from './Nav Bar';
-import BookPv from './BookPv';
-import BookList from './Book List';
 import SearchBar from './SearchBar';
 import'../styles/BookPv.css';
 import '../styles/MyLibrary.css';
+import MyLibraryPv from'./MyLibraryPv';
 
 const MyLibrary = () => {
     const cookies = new Cookies();
@@ -27,8 +26,7 @@ const MyLibrary = () => {
               <h1 className="libraryHeader">My Library</h1>
               <SearchBar/>
               <div className="column">
-                  <h1 className="dateText">Month Day, Year</h1>
-                  <BookList className="bookList" name={current_uid}/>
+                  <MyLibraryPv data={{path: "Users/" + cookies.get('BigWordsUser').user.uid + "/BooksRead/"}}/>
               </div>
           </div>
       </div>

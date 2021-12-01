@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import 'bulma/css/bulma.min.css';
 import NavBar from './Nav Bar'
 import Cookies from 'universal-cookie';
-import { useHistory } from 'react-router-dom'    
+import { HashRouter as Router, Link,useHistory } from 'react-router-dom'    
 import SearchBar from './SearchBar';
-import BookList from './Book List';
+import {getAuth} from '@firebase/auth';
 import '../styles/MyLibrary.css';
+import BookPv from './BookPv';
 
 const Search = () => {
     const cookies = new Cookies();
     const history = useHistory();
+    const auth = getAuth();
 
     if(cookies.get('BigWordsUser') == null) {
         history.push('/');
@@ -17,13 +18,13 @@ const Search = () => {
     }
     
     return (
-      <div className="columns is-vcentered background"> 
+      <div className="rows is-vcentered background"> 
           <NavBar className="navbar" current="search"/>
-          <div className="column libraryBox">
+          <div className="row libraryBox">
               <SearchBar/>
-              <div className="column">
+              <div className="row">
                   <h1 className="libraryHeader">Featured</h1>
-                  <BookList className="bookList" name="featured"/>
+                  <BookPv className="bookList" name="featured"/>
               </div>
           </div>
       </div>

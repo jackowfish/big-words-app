@@ -55,10 +55,7 @@ ReactDOM.render(
             <AdminPage />
           </Route>
           
-          {/* Testing Book Info Page Remove/Update Later */}
-          <Route path="/bookinfo">
-            <BookInfo />
-          </Route>
+          <Route path={"/bookinfo"} component={BookInfo}/>
           <Route path={"/edit"} component={EditPage}/>
           
           <Route path ="/">

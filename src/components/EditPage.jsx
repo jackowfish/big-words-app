@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from './Nav Bar'
 import Button from './Button'
-import { Switch, Route, Link, useParams, useHistory, useLocation} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import '../styles/MyAccount.css'
 import { getAuth } from '@firebase/auth';
 import Cookies from 'universal-cookie';
@@ -17,9 +17,6 @@ const EditPage = (props) => {
     const dbData = props.location.data.id
     const type = props.location.data.type
     
-    console.log("about", props.location.data)
-    console.log(ref(db,dbData))
-
     if(cookies.get('BigWordsUser') == null) {
         history.push('/');
         window.location.reload(false);

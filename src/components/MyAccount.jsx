@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'bulma/css/bulma.min.css';
 import NavBar from './Nav Bar'
 import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom'
@@ -12,7 +11,6 @@ import ReaderModal from './modals/readerModal';
 import { getAuth, signOut } from '@firebase/auth';
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import TableBuilder from'./tableBuilder';
-import EditPage from './editPage';
 
 
 const MyAccount = () => {
@@ -53,9 +51,9 @@ const MyAccount = () => {
 
 
     return (
-      <div className="columns is-vcentered background"> 
+      <div className="rows is-vcentered background"> 
           <NavBar className="navbar" current="myaccount"/>
-          <div className="column accountBox">
+          <div className="row accountBox">
               <h1 className="accountHeader">Account</h1>
               <table>
                   <thead>
@@ -90,7 +88,10 @@ const MyAccount = () => {
                   </thead>
                   
                     <TableBuilder name="Reader"
-                        data={"Users/" + cookies.get('BigWordsUser').user.uid + "/Readers/"}
+                        data={{
+                            user:"Users/" + cookies.get('BigWordsUser').user.uid + "/Readers/",
+                            from:"account"
+                        }}
                     />
                   
                   <thead>
@@ -104,7 +105,10 @@ const MyAccount = () => {
                   </thead>
                   
                     <TableBuilder name="Listener"
-                    data={"Users/" + cookies.get('BigWordsUser').user.uid + "/Children/"}
+                    data={{
+                        user:"Users/" + cookies.get('BigWordsUser').user.uid + "/Children/",
+                        from:"account"
+                    }}
                     />
                   
                   
