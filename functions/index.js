@@ -32,6 +32,9 @@ const parseBook = () => {
   let bookObject = new Object();
   // Split file by spaces into Array
   bookArr = data.toLowerCase().split(' ');
+  if(bookArr.length <= 2) {
+    bookArr = data.toLowerCase().split('\n');
+  }
   // Remove empty indexes and null values
   bookArr = bookArr.filter(el => {
     return el != null && el != '';
@@ -41,7 +44,7 @@ const parseBook = () => {
     bookArr[i] = bookArr[i].replace(/[^A-Za-z]/g, '');
     if(bookArr[i].match(/[^A-Za-z]/g) != null) {
       bookArr = bookArr.splice(i, 1);
-    }
+    };
     /*  
     Check to see if word exists in object
     * If yes, enumerate
@@ -83,6 +86,8 @@ exports.addBook = functions.https.onRequest(async (req, res) => {
     // Can't get download working right, but tested with extremely large book with 10s delay and works fine.
     await delay(10000);
     words = parseBook();
+    // For testing purposes only
+    // fs.writeFileSync('./book.json', JSON.stringify(words));
     if ("" in words) {
       delete words[""];
     };

@@ -3,10 +3,12 @@ WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (fil
 WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-10:53:45.990 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-10:53:46.155 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:4874
-12:39:56.641 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
-12:39:56.646 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: bigwords-202f6-default-rtdb
-12:39:56.652 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - Stopping namespace actor for bigwords-202f6-default-rtdb
-12:39:56.653 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - Gauges removed for bigwords-202f6-default-rtdb
-12:39:56.657 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
+19:09:17.361 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+19:09:17.526 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:4874
+19:12:55.519 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+19:12:55.526 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.Terminator$Terminator - 2 actors left to terminate: bigwords-202f6-default-rtdb, bigwords-202f6
+19:12:55.532 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - Stopping namespace actor for bigwords-202f6
+19:12:55.532 [NamespaceSystem-akka.actor.default-dispatcher-7] INFO com.firebase.core.namespace.NamespaceActor - Stopping namespace actor for bigwords-202f6-default-rtdb
+19:12:55.533 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - Gauges removed for bigwords-202f6
+19:12:55.533 [NamespaceSystem-akka.actor.default-dispatcher-7] INFO com.firebase.core.namespace.NamespaceActor - Gauges removed for bigwords-202f6-default-rtdb
+19:12:55.537 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.

@@ -7,19 +7,20 @@
     font-size: 2em;
 }
 
+/*
 .outer-div {
-    width: 105%;
+    width: 100%;
     text-align: center;
-    /* background-color: #0666a3 */
+    /* background-color: #0666a3 *//*
   }
 
 .inner-div {
     display: inline-block;
     margin: 0 auto;
     padding: 3px;
-    /* background-color: #8ebf42 */
+    /* background-color: #8ebf42 *//*
   }
-
+*/
 /* Absolute Center Spinner */
 .loading {
     position: fixed;

@@ -86,43 +86,47 @@ const AdminPage = () => {
         redirect: 'follow'
       };
       fetch(`https://us-central1-bigwords-202f6.cloudfunctions.net/addBook?title=${bookName.value}&AuthorName=${authorName.value}&text=${bookID}`, requestOptions);
+      // For Testing!!
+      // fetch(`http://localhost:5001/bigwords-202f6/us-central1/addBook?title=${bookName.value}&AuthorName=${authorName.value}&text=${bookID}`, requestOptions)
       setSending(false);
       setCompleted(true);
     }
   }
 
   return (
-    <div className="columns is-vcentered background outer-div"> 
+    <div className="rows background outer-div"> 
         <NavBar className="navbar" current="admin"/>
-        <div className="column welcomeBack">
+        <div className="row welcomeBack">
         {!isCompleted && !isSending &&
           <div>
           <p className="PageTitle"> Upload new book data!</p>
           <input className="input adminInput" type="text author" placeholder="Author Name" {...authorName}/>
           <input className="input adminInput" type="text book" placeholder="Book Name" {...bookName}/>
           {/* <input className="input adminInput" type="text isbn" placeholder="ISBN-10 Number" {...isbn}/> */}
-          <div className="file is-dark inner-div">
-            <b> Select cover image for book </b>
-            <label className="file-label">
-              <input className="file-input" type="file" name="bookCover" accept=".jpg, .png" onChange={(e)=>{setImage(e.target.files[0])}}/>
-              <span className="file-cta">
-                <span className="file-label">
-                  {image ? image.name : 'No File Selected'}
+          <div className="rows">
+            <div className="file is-dark row">
+              <b> Select cover image for book </b>
+              <label className="file-label">
+                <input className="file-input" type="file" name="bookCover" accept=".jpg, .png" onChange={(e)=>{setImage(e.target.files[0])}}/>
+                <span className="file-cta">
+                  <span className="file-label">
+                    {image ? image.name : 'No File Selected'}
+                  </span>
                 </span>
-              </span>
-            </label>
-          </div>
-          
-          <div className="file is-dark inner-div">
-            <b> Select file with book text (.txt)</b>
-            <label className="file-label">
-              <input className="file-input" accept=".txt" type="file" name="bookCover" onChange={(e)=>{setBookText(e.target.files[0])}}/>
-              <span className="file-cta">
-                <span className="file-label">
-                  {bookText ? bookText.name : 'No File Selected'}
+              </label>
+            </div>
+            
+            <div className="file is-dark row">
+              <b> Select file with book text (.txt)</b>
+              <label className="file-label">
+                <input className="file-input" accept=".txt" type="file" name="bookCover" onChange={(e)=>{setBookText(e.target.files[0])}}/>
+                <span className="file-cta">
+                  <span className="file-label">
+                    {bookText ? bookText.name : 'No File Selected'}
+                  </span>
                 </span>
-              </span>
-            </label>
+              </label>
+            </div>
           </div>
           <Button className="green button adminInput" name="Upload Book" onClick={addBookDetails}/>
           </div>
