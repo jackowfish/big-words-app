@@ -26,11 +26,11 @@ const BookInfo = (props) => {
 }
 
     return (
-        <div className="columns is-vcentered background"> 
+        <div className="rows is-vcentered background"> 
             <NavBar className="navbar" current="mylibrary"/>
-            <div className="column bookInfo">
+            <div className="bookInfo">
                 <h1 className="titleText">
-                  <button className="button" onClick={() => history.goBack()}><BsChevronLeft/></button> 
+                  <button className="button red" onClick={() => history.goBack()}><BsChevronLeft/></button> 
                 {bookInfo.title}</h1>
                 <h1 className="authorText">By: {bookInfo.author}</h1>
                 <div className="bookInfo">
