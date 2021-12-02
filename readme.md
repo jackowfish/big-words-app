@@ -34,7 +34,7 @@ For testing purposes, we're using Cypress. To run, use `npx cypress open`
 
 ## Deployment
 - `npm build` compiles the React code to production files (HTML, CSS, JS)
-- To deploy the site, run firebase deploy
+- To deploy the [site](https://bigwords-202f6.web.app), run firebase deploy
 
 ## Technologies Used
 - Javascript, React.js, Firebase (Firebase Cloud Functions, Realtime Database, and Firebase Hosting)
@@ -52,7 +52,7 @@ Before contributing to BigWords, new developers must have access to the followin
 Jack Decker, Lianna Goehring, and Ashley Wortham
 
 ## License
-Due to an IP agreement, we are awaiting client approval.
+Copyright 2021, Jennifer Stone, All rights reserved.
 
 ## Acknowledgements
 We would like to thank Michelle Farmer and Dr. Jeff Terrell for their guidance on this project, as well as our client Jennifer Stone.

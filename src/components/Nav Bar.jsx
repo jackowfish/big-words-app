@@ -16,6 +16,11 @@ const NavBar = (props) => {
     const history = useHistory();
     const db = getDatabase();
 
+    if(cookies.get('BigWordsUser') == null) {
+        history.push('/');
+        window.location.reload(false);
+    }
+
     const [isAdmin, setIsAdmin] = useState("");
     const [sizeDiff, setSizeDiff] = useState(0);
     const [adminClass, setAdminClass] = useState("column");
