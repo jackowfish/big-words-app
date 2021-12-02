@@ -79,6 +79,7 @@ class BookPv extends React.Component{
                     author: author,
                     words:wordCount,
                     bigwords:bigWordCount,
+                    cover:`https://firebasestorage.googleapis.com/v0/b/bigwords-202f6.appspot.com/o/images%2F${currentBook}?alt=media`,
                 })
                    
             }
@@ -90,19 +91,30 @@ class BookPv extends React.Component{
         if(this.state.name == "featured"){
           return( this.state.booksArray.map((book) => {
                return(
-                    <div className="bookpv" key={book.title}>
-                        <Link to={{
-                            pathname: `/bookinfo`,
-                            search: `?sort=${book.url}`,
-                            data:{book:book}
-                        }}>
-                            <div className="row">
-                                <h2>{book.title}</h2>
-                                <h1>{book.author}</h1>
-                                <h3>{book.words} Words <br/>
-                                {book.bigwords} Big Words</h3>
-                            </div>
-                        </Link>
+                   <div>
+                        <br/>
+                        <div className="bookpv" key={book.title}>
+                                <Link to={{
+                                    pathname: `/bookinfo`,
+                                    search: `?sort=${book.url}`,
+                                    data:{book:book}
+                                }}>
+                                    <div className="row">
+                                        <div className="columns">
+                                            <div className="column">
+                                                <h2>{book.title}</h2>
+                                                <h1>{book.author}</h1>
+                                                <h3>{book.words} Words <br/>
+                                                {book.bigwords} Big Words</h3>
+                                            </div>
+                                            <div className="column">
+                                                <img src={book.cover} alt={book.title + " cover"}/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                        </div>
+                        <br/>
                     </div>
                 );
             }))

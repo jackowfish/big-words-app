@@ -34,7 +34,7 @@ const BookInfo = (props) => {
                 {bookInfo.title}</h1>
                 <h1 className="authorText">By: {bookInfo.author}</h1>
                 <div className="bookInfo">
-                    <img src="../static/BigWords.png" className="image"/>
+                    <img src={bookInfo.cover} className="image"/>
                 </div>
                 <h1 className="bookDataText">{bookInfo.words} Words|{bookInfo.bigwords} Big Words|Read[#]Times</h1>
               <Link id="ViewBigWordsButton" to="search">
