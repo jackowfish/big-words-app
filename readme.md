@@ -39,7 +39,7 @@ For testing purposes, we're using Cypress. To run, use `npx cypress open`
 ## Technologies Used
 - Javascript, React.js, Firebase (Firebase Cloud Functions, Realtime Database, and Firebase Hosting)
 - [Application Architecture](https://jackowfish.github.io/big-words-site/2021/10/03/Application-Architecture.html)
-- [Architecture Diagram](https://drive.google.com/file/d/1xZ34oV8ZcmgT-18Jw9oZuGVB4lBdZqQu/view)
+- [Architecture Diagram](https://drive.google.com/file/d/1ns9DBivo3-i7BX9h5momS16R5N4YZbbQ/view?usp=sharing)
 
 ## Contributing
 Before contributing to BigWords, new developers must have access to the following:
