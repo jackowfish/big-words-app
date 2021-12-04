@@ -1,13 +1,15 @@
 .accountBox {
     background-color: white;
     margin-top: 15px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding-bottom: 80px;
     padding-top: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
+    height: 700px;
+    overflow: auto;
   }
 
   th{

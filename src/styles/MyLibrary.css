@@ -1,26 +1,60 @@
 .libraryBox {
-    background-color: white;
-    margin-top: 15px;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     padding-top: 20px;
+    background-color: #FFC857;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 10px;
-    text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
+    height: 670px;
+    overflow: auto;
   }
 
 .libraryHeader{
-    text-align: left;
     font-weight: bold;
-    padding-bottom: 20px;
-    padding-left: 10px;
-    font-size: 24px;
+    font-size: 20px;
+    color: black;
+    padding: 8px;
 }
 
 .dateText{
     text-align: left;
     font-weight: bold;
-    padding-bottom: 5px;
+    color: black;
     text-decoration: underline;
+    font-size: 18px;
+    text-shadow: 1px 1px white;
+}
+
+.libraryText {
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 1px 3px 2px darkslategray;
+}
+
+.featuredHeader {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    float: left;
+    text-decoration: underline;
+    text-shadow: 1px 1px white;
+}
+
+.featuredBox {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #FFC857;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 2px darkslategray;
+    height: 720px;
+    overflow: auto;
 }

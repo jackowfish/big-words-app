@@ -22,9 +22,10 @@ const MyLibrary = () => {
     return (
       <div className="rows is-vcentered background"> 
           <NavBar className="navbar" current="mylibrary"/>
+          <div className="libraryText">
+            <h1 className="libraryHeader">My Library</h1>
+          </div>
           <div className="row libraryBox">
-              <h1 className="libraryHeader">My Library</h1>
-              <SearchBar/>
               <div className="row">
                   <MyLibraryPv data={{path: "Users/" + cookies.get('BigWordsUser').user.uid + "/BooksRead/"}}/>
               </div>

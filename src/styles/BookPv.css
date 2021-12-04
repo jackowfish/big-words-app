@@ -1,11 +1,13 @@
 
 .bookpv {
     background-color:white;
-    /* box-shadow: 1px 3px 2px darkslategray; */
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 20px; 
-    display:flex
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    outline-style: solid;
+    width: 95%
   }
 
   .bookpv div {
@@ -13,7 +15,6 @@
     text-align: center;
     display: inline-block;
     font-size: 12px;
-    margin-top: 20px;
   }
 
   .textGrouping div{
@@ -32,8 +33,6 @@
 h2 {
    font-weight:bold;
    font-size: 24px;
-   
-
 }
 
 h3{
@@ -47,8 +46,12 @@ h4{
     font-size: 14px;
 }
 
-img{
+.book_cover{
     width: 180px;
     height: auto;
+}
+
+.book_info_text {
+    text-align: center;
 }
 

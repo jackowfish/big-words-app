@@ -80,7 +80,7 @@ class MyLibraryPv extends React.Component{
                                     onValue(wordInfo, (snapshot) => {
                                         const wordData = snapshot.val();
                                         wordCount++;
-                                        if(wordData.bigword == true){
+                                        if(wordData != null && wordData.bigword == true){
                                             bigWordCount++;
                                         }
                                 });
@@ -134,10 +134,10 @@ class MyLibraryPv extends React.Component{
                                         }}>
                                             <div className="row">
                                                 <div className="columns">
-                                                    <div className="column bookpv">
-                                                        <img src={book.cover} key={book.title + "cover"}/>
+                                                    <div className="column bookpv_cover">
+                                                        <img className="book_cover" src={book.cover} key={book.title + "cover"}/>
                                                     </div>
-                                                    <div className="column">
+                                                    <div className="column book_info_text">
                                                         <h2>{book.title}</h2>
                                                         <h1>{book.author}</h1>
                                                         <h3>{book.words} Words <br/>

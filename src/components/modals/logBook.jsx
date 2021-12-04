@@ -104,7 +104,7 @@ class LogBook extends React.Component{
               <div className="bookInfo">
 
               </div>
-              <h1 className="bookDataText">{this.state.words} Words | {this.state.bigwords} BigWords | Read [#] Times</h1>
+              <h1 className="bookDataText">{this.state.words} Words | {this.state.bigwords} BigWords</h1>
               <div className="bookInfo">
                 <h1>Reader(s)</h1>
                 <LogSelect

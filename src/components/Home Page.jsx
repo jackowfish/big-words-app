@@ -96,7 +96,6 @@ class HomePage extends React.Component {
               <Link id="LogBooksButton" to="search">
                 <Button className="yellow button" name="Log Books"/>
               </Link>
-            {/* <h1 className="previousText">Previously Read...</h1> */}
           </div>
       </div>
       

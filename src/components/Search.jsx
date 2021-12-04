@@ -20,11 +20,11 @@ const Search = () => {
     return (
       <div className="rows is-vcentered background"> 
           <NavBar className="navbar" current="search"/>
-          <div className="row libraryBox">
+          <div className="row featuredBox">
               <SearchBar/>
               <div className="row">
-                  <h1 className="libraryHeader">Featured</h1>
-                  <BookPv className="bookList" name="featured"/>
+                  <h1 className="featuredHeader">Featured</h1>
+                  <BookPv className="bookList" key="bookPv_list" name="featured"/>
               </div>
           </div>
       </div>
