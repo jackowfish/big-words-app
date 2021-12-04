@@ -29,7 +29,7 @@ class MyWords extends React.Component {
       current_child_id: ""
     })
     let current_index = this.state.current_index;
-    if (current_index >= this.state.children_id.length - 1) {
+    if (this.state.children_id != null && current_index >= this.state.children_id.length - 1) {
       current_index = 0;
     } else {
       current_index++;
@@ -78,10 +78,10 @@ class MyWords extends React.Component {
       <div className="listener_name_section">
           {this.state.has_child ? <h1 className="listener_name">{this.state.current_child} 
           <button className="listener" onClick={this.toggleListener}>Switch Listener</button>
-          </h1> : <h1 className="listener_name"></h1>}
+          </h1> : <h1 className="listener_name">Add Children in Account</h1>}
       </div>
-      {this.state.current_child_id.length > 0 ? <BigWords className="bigwords_list" child={this.state.current_child_id}/> : null}
-      {this.state.current_child_id.length > 0 ? <AllWords className="allwords_list" child={this.state.current_child_id}/> : null}
+      {this.state.current_child_id != null && this.state.current_child_id.length > 0 ? <BigWords className="bigwords_list" child={this.state.current_child_id}/> : null}
+      {this.state.current_child_id != null && this.state.current_child_id.length > 0 ? <AllWords className="allwords_list" child={this.state.current_child_id}/> : null}
     </div>
     
     )
