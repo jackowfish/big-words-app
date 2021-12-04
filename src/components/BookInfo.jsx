@@ -28,12 +28,12 @@ const BookInfo = (props) => {
     return (
         <div className="rows is-vcentered background"> 
             <NavBar className="navbar" current="mylibrary"/>
-            <div className="bookInfo">
+            <div className="row bookInfo">
                 <h1 className="titleText">
                   <button className="button red" onClick={() => history.goBack()}><BsChevronLeft/></button> 
                 {bookInfo.title}</h1>
                 <h1 className="authorText">By: {bookInfo.author}</h1>
-                <div className="bookInfo">
+                <div>
                     <img src={bookInfo.cover} className="image"/>
                 </div>
                 <h1 className="bookDataText">{bookInfo.words} Words|{bookInfo.bigwords} Big Words|Read[#]Times</h1>

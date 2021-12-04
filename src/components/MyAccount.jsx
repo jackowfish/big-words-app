@@ -63,20 +63,11 @@ const MyAccount = () => {
                           <th></th>
                       </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>{user_first_name} {user_last_name}</td>
-                        <td>
-                         <Link to={{pathname:'/edit',
-                            search: `?sort=${cookies.get('BigWordsUser').user.uid}`,
-                            data:{
-                                id: `${'Users/' + cookies.get('BigWordsUser').user.uid}`,
-                                type: 'Caregiver'
-                            }}}><BsChevronRight size={20}/></Link>
-                        </td>
-                    </tr>
-                  </tbody>
+                  <TableBuilder name="Caretaker"
+                  data={{
+                      from:"account"
+                      }}/>
+                      
                   <thead>
                       <tr>
                           <th>Reader Information</th>

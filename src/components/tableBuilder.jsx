@@ -14,10 +14,11 @@ class TableBuilder extends React.Component {
         this.cookies = new Cookies();
         this.state = {
             componentArray: [],
+            name: props.name,
             user: props.data.user,
             from: props.data.from,
             type: props.name,
-            userData: [],
+            loaded: false
         };
     }
 
@@ -28,12 +29,35 @@ class TableBuilder extends React.Component {
     render_data(){
         const db= getDatabase();
         const components_array = [];
-        const component_list = ref(db, this.state.user)
+        if(this.state.name == "Caretaker"){
+            var dataId = this.cookies.get('BigWordsUser').user.uid 
+            const dataFirst = ref(db, 'Users/' + dataId +  "/First Name")
+            var dataFirstName = "";
+            
+            const dataLast = ref(db, 'Users/'+ dataId + '/Last Name/')
+            var dataLastName="";
+
+            onValue(dataFirst, (snapshot) => {
+                dataFirstName = snapshot.val();
+            })
+            onValue(dataLast, (snapshot) => {
+                dataLastName = snapshot.val();
+            })
+                
+            components_array.push({
+                id: dataId,
+                first: dataFirstName,
+                last: dataLastName
+            })
+            this.setState(this.state.componentArray = components_array)
+                
+
+        }
+        else{const component_list = ref(db, this.state.user)
 
         onValue(component_list, (snapshot) => {
             const componentListData = snapshot.val();
             for(const currentData in componentListData){
-                
                 const dataFirst = ref(db, this.state.user + currentData + "/First Name")
                 var dataFirstName = "";
                 const dataLast = ref(db, this.state.user + currentData + '/Last Name/')
@@ -55,36 +79,12 @@ class TableBuilder extends React.Component {
                         )
                     
             }
-            this.setState(this.state.componentArray = components_array)
-        });
+            const uniqueComponents = components_array.filter((ele, idx) => idx == components_array.findIndex( elem => elem.id == ele.id))
+            this.setState(this.state.componentArray = uniqueComponents)
+        });}
     }
 
-    onTrigger = (id) => {
-        this.state.userData.push(id)
-        this.props.parentCallback(this.state.userData)
-
-        let clicked = document.getElementById(id)
-        clicked.style.backgroundColor = "#FF932F"
-    }
-
-    onTriggerRemove = (id) => {
-        this.setState({userData: this.state.userData.filter(test = (user)=>{
-            return user !== id
-        })})
-        this.props.parentCallback(this.state.userData)
-    }
-
-    toggleButton = (id) => {
-        var click = false
-
-        if(click == false){
-            click = true;
-            return(<button className="button is-small" id={id}onClick={() => this.onTrigger(id)}>Add</button>)
-        } else{
-            return(<button className="button is-small" id={id}onClick={() => this.onTriggerRemove(id)}>Remove</button>)
-        }  
-
-    }
+    
 
     render(){
         if(this.state.from == "account"){
@@ -107,21 +107,6 @@ class TableBuilder extends React.Component {
                         )
                     })}
                 </tbody>
-            )
-        }
-        if(this.state.from =="logbook"){
-            return(
-                this.state.componentArray.map((user) => {
-                    return(
-                        <section className="modal-card-body" key={user.id}>
-                            <div>
-                                <h1>{user.first} {user.last}</h1>
-                                <button className="button is-small" id={user.id}onClick={() => this.onTrigger(user.id)}>Add</button>
-                                
-                            </div>
-                        </section>
-                    )
-                })
             )
         }
     }

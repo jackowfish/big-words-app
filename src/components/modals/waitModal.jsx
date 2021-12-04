@@ -3,6 +3,8 @@ import Cookies from 'universal-cookie';
 import React, {useState, useHistory} from "react";
 import ReactDOM from "react-dom";
 import Modal from "../../hooks/modal";
+import 'bulma/css/bulma.min.css';
+
 
 
 const WaitModal = (props) => {
@@ -11,6 +13,11 @@ const WaitModal = (props) => {
   const [showModal, setShowModal] = useState(false)
   const type = (props.data.type)
   const name = (props.data.name)
+
+  if(cookies.get('BigWordsUser') == null) {
+    history.push('/');
+    window.location.reload(false);
+}
 
   const openModal = (event) => {
     event.preventDefault();
@@ -21,6 +28,7 @@ const WaitModal = (props) => {
     event.preventDefault();
     remove(ref(db,props.data.id));
     openModal(event);
+    window.location.assign('#/myaccount')
   }
 
   return(

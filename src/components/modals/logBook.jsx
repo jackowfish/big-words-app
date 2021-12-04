@@ -7,6 +7,7 @@ import { getDatabase, ref, set, push} from "firebase/database";
 import Modal from "../../hooks/modal"
 import TableBuilder from'../tableBuilder';
 import Cookies from 'universal-cookie';
+import LogSelect from "../LogSelect";
 
 class LogBook extends React.Component{
   constructor(props){
@@ -34,16 +35,24 @@ class LogBook extends React.Component{
       this.setState({
       show:true
       })
-    }else{this.setState({show:false})}
+    }else{
+      this.setState({
+        show:false,
+        readers: [],
+        children: []
+      })
+    }
 
   }
 
   handleReadersCallback = (childData)=> {
     this.state.readers = childData
+  
   }
 
   handleChildrenCallback = (childData)=> {
     this.state.children = childData
+    
   }
 
 
@@ -98,7 +107,7 @@ class LogBook extends React.Component{
               <h1 className="bookDataText">{this.state.words} Words | {this.state.bigwords} BigWords | Read [#] Times</h1>
               <div className="bookInfo">
                 <h1>Reader(s)</h1>
-                <TableBuilder
+                <LogSelect
                 parentCallback={this.handleReadersCallback}
                 name="Readers"
                 data={{
@@ -109,7 +118,7 @@ class LogBook extends React.Component{
               </div>
               <div className="bookInfo">
                 <h1>Listener(s)</h1>
-                  <TableBuilder
+                  <LogSelect
                     parentCallback={this.handleChildrenCallback}
                     name="Listeners"
                     data={{

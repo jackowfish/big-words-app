@@ -56,9 +56,9 @@ const EditPage = (props) => {
         }
     
     return(
-        <div className="columns is-vcentered background"> 
+        <div className="rows is-vcentered background"> 
           <NavBar className="navbar" current="myaccount"/>
-          <div className="column accountBox">
+          <div className="row accountBox">
               <button className="button"
               onClick= {() => history.goBack()}><BsChevronLeft size={20}/></button>
               <h1> Edit {props.location.data.type}</h1>

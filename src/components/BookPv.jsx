@@ -91,9 +91,8 @@ class BookPv extends React.Component{
         if(this.state.name == "featured"){
           return( this.state.booksArray.map((book) => {
                return(
-                   <div>
-                        <br/>
-                        <div className="bookpv" key={book.title}>
+                   <div> 
+                        <div className="bookpv" key={book.url}>
                                 <Link to={{
                                     pathname: `/bookinfo`,
                                     search: `?sort=${book.url}`,
@@ -101,20 +100,19 @@ class BookPv extends React.Component{
                                 }}>
                                     <div className="row">
                                         <div className="columns">
+                                        <div className=" column bookpv">
+                                                <img src={book.cover} key={book.title + " cover"}/>
+                                            </div>
                                             <div className="column">
                                                 <h2>{book.title}</h2>
                                                 <h1>{book.author}</h1>
                                                 <h3>{book.words} Words <br/>
                                                 {book.bigwords} Big Words</h3>
                                             </div>
-                                            <div className="column">
-                                                <img src={book.cover} alt={book.title + " cover"}/>
-                                            </div>
                                         </div>
                                     </div>
                                 </Link>
                         </div>
-                        <br/>
                     </div>
                 );
             }))
