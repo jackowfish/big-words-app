@@ -20,6 +20,7 @@ class LogBook extends React.Component{
       author: props.data.author,
       words: props.data.words,
       bigwords: props.data.bigwords,
+      img: props.data.img,
       show: false,
       readers:[],
       children:[]
@@ -101,11 +102,11 @@ class LogBook extends React.Component{
             <section className="modal-card-body">
               <h1 className="titleText">{this.state.title}</h1>
               <h1 className="authorText">By: {this.state.author}</h1>
-              <div className="bookInfo">
-
-              </div>
+              {/* <div className="bookInfo">
+                <img src={this.state.img} className="image"/>
+              </div> */}
               <h1 className="bookDataText">{this.state.words} Words | {this.state.bigwords} BigWords</h1>
-              <div className="bookInfo">
+              <div className="userInfo">
                 <h1>Reader(s)</h1>
                 <LogSelect
                 parentCallback={this.handleReadersCallback}
@@ -116,7 +117,7 @@ class LogBook extends React.Component{
                 }}/>
 
               </div>
-              <div className="bookInfo">
+              <div className="userInfo">
                 <h1>Listener(s)</h1>
                   <LogSelect
                     parentCallback={this.handleChildrenCallback}
