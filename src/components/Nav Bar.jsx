@@ -83,6 +83,12 @@ const NavBar = (props) => {
                 Search
             </Link>
         </div>
+        <div className={adminClass}>
+            <Link id="MyAccountLink" to="myaccount">
+                <RiAccountCircleFill size={23 - sizeDiff} color={props.current == "myaccount" ? "black" : ""}/> <br/>
+                Account
+            </Link>
+        </div>
         {isAdmin && 
             <div className={adminClass}>
                 <Link id="AdminLink" to="admin">
@@ -91,12 +97,6 @@ const NavBar = (props) => {
                 </Link>
             </div>
         }
-        <div className={adminClass}>
-            <Link id="MyAccountLink" to="myaccount">
-                <RiAccountCircleFill size={23 - sizeDiff} color={props.current == "myaccount" ? "black" : ""}/> <br/>
-                My Account
-            </Link>
-        </div>
     </div>
     )
 }

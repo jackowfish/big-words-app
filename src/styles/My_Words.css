@@ -11,7 +11,7 @@
 
 .listener_name {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     color: black;
     padding: 8px;
 }
@@ -99,11 +99,11 @@ button {
     margin-top: 5px;
     background-color: white;
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 .listener {
     font-size: 15px;
     float: right;
-    margin-top: 3px;
+    margin-top: 1px;
 }
