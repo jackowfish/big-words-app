@@ -16,7 +16,7 @@ const NavBar = (props) => {
     const history = useHistory();
     const db = getDatabase();
 
-    if(cookies.get('BigWordsUser') == null) {
+    if(cookies.get('BigWordsUser') == undefined) {
         history.push('/');
         window.location.reload(false);
     }
@@ -43,7 +43,14 @@ const NavBar = (props) => {
         }
     }
     // Check to make sure user is an admin
-    const user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
+    let user_type = 'user';
+
+    try {
+        user_type = ref(db, 'Users/' + cookies.get('BigWordsUser').user.uid + "/Type");
+    } catch(error) {
+        user_type = 'user';
+    }
+    
     onValue(user_type, (snapshot) => {
         if(isAdmin == false) {
             //console.log(snapshot.val());

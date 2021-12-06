@@ -1,0 +1,13 @@
+{
+  "include": [
+    "src/*.jsx",
+    "src/**/*.jsx"
+  ],
+  "exclude": [
+    "!**/node_modules/**",
+    "node_modules",
+    "**/*.test.js"
+  ],
+  "instrument": true,
+  "all": true
+}
