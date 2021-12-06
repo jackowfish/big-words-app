@@ -29,14 +29,14 @@ const BookInfo = (props) => {
         <div className="rows is-vcentered background"> 
             <NavBar className="navbar" current="mylibrary"/>
             <div className="row bookInfo">
-            <button className="button" onClick={() => history.goBack()}><BsChevronLeft/></button> 
+            <button className="red button" onClick={() => history.goBack()}><BsChevronLeft/></button> 
                 <h1 className="titleText">                {bookInfo.title}</h1>
                 <h1 className="authorText">By: {bookInfo.author}</h1>
                 <div>
                     <img className="book_cover" src={bookInfo.cover} className="image"/>
                 </div>
                 <h1 className="bookDataText">{bookInfo.words} Words | {bookInfo.bigwords} Big Words</h1>
-              <Link id="ViewBigWordsButton" to="search">
+              {/* <Link id="ViewBigWordsButton" to="search">
                 <Button className="yellow button" name="View Big Words"/>
               </Link>
               <Link id="ViewAllWordsButton" to="search">
@@ -44,7 +44,7 @@ const BookInfo = (props) => {
               </Link>
               <Link id="ReadingHistoryButton" to="search">
                 <Button className="yellow button" name="Reading History"/>
-              </Link>
+              </Link> */}
               <LogBook data={bookInfo}/>
             </div>
         </div>

@@ -21,9 +21,9 @@ const Search = () => {
       <div className="rows is-vcentered background"> 
           <NavBar className="navbar" current="search"/>
           <div className="row featuredBox">
-              <SearchBar/>
+              {/* <SearchBar/> */}
               <div className="row">
-                  <h1 className="featuredHeader">Featured</h1>
+                  <h1 className="featuredHeader">All Books</h1>
                   <BookPv className="bookList" key="bookPv_list" name="featured"/>
               </div>
           </div>

@@ -83,7 +83,7 @@ class LogBook extends React.Component{
   render(){
     return(
       <div className="App">
-      <button className="button"
+      <button className="yellow button"
       onClick={this.openModal}>
         Log Book
       </button>
