@@ -7,7 +7,9 @@ import { BiUser } from 'react-icons/bi';
 import { createPortal } from 'react-dom';
 import AddRemoveBtn from './AddRemoveBtn';
 
-
+//Accessed from LogBook
+//Displays Listener/Reader information for users, 
+//Passes selected listern/reader data between LogBook and AddRemoveBtn
 class LogSelect extends React.Component {
     constructor(props){
         super();
@@ -26,6 +28,7 @@ class LogSelect extends React.Component {
         this.render_data();
     }
 
+    //Retrieving User's Reader/Listener Information from the database
     render_data(){
         const db= getDatabase();
         const components_array = [];
@@ -61,6 +64,9 @@ class LogSelect extends React.Component {
     }
 
 
+    //Callback from AddRemoveBtn
+    //When the add button is clicked, the listener/reader id will be pushed to userData and passed to LogBook
+    //When the remove button is clicked, the listener/reader id will be removed from userData and passed to LogBook
     handleCallback = (childData) => {
         if(childData.willBe == "added"){
             this.state.userData.push(childData.id)

@@ -8,6 +8,10 @@ import Cookies from 'universal-cookie';
 import { getStorage, getDownloadURL } from "firebase/storage";
 import { ref as ref_storage } from "firebase/storage";
 
+
+//Accessed from Search and MyLibrary
+//This component shows users a preview of a book before they click on it
+// Once clicked, the user will be redirected to the BookInfo page
 class BookPv extends React.Component{
     constructor(props){
         super();

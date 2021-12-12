@@ -6,12 +6,13 @@ import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import useInput from "../../hooks/useInput";
 import Modal from "../../hooks/modal";
 
-
-
+//Accessed from "+" Button next to "Readers" in MyAccount
+//This Modal is used to let users add a new reader to their account
 const ReaderModal = () => {
   const cookies = new Cookies();
   const db = getDatabase();
   
+  //onClick event, sends user input into their account information in the database
   const add_reader = async (event) => {
     event.preventDefault();
     const newReader = push(ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid + "/Readers/"));
@@ -25,10 +26,12 @@ const ReaderModal = () => {
   openModal(event);
 }
 
+  //takes user input for add_reader to use
   const first_name = useInput("")
   const last_name = useInput("")
+  
+  //toggle modal function 
   const [showModal, setShowModal] = useState(false)
-
   const openModal = (event) => {
     event.preventDefault();
     setShowModal(prev => !prev)

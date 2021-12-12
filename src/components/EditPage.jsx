@@ -9,6 +9,9 @@ import WaitModal from './modals/waitModal';
 import { getDatabase, ref, onValue, set, update } from "firebase/database";
 import {BsChevronLeft} from 'react-icons/bs'
 
+//Accessed from tableBuilder in MyAccount
+// This component allows users to edit information about a given Caretaker/Reader/Listener on their account
+// Users will also be able to remove reader/listeners from their account
 const EditPage = (props) => {
     const cookies = new Cookies();
     const history = useHistory();
@@ -21,9 +24,12 @@ const EditPage = (props) => {
         history.push('/');
         window.location.reload(false);
     }
+
+    //access current first and last name data to autofill textbox
     const first_name = React.createRef();
     const last_name = React.createRef();
 
+    //access reader/listener/caregiver first and last name
     const childFirst = ref(db,dbData +"/First Name")
         var childFirstName="";
         const childLast = ref(db,dbData +"/Last Name/" )
@@ -36,6 +42,7 @@ const EditPage = (props) => {
             childLastName = snapshot.val();
         })
         
+        //onClick event, updates caregiver/reader/listener info based on user input
         const update_data = async (event) => {
             event.preventDefault();
             const updates = {};
@@ -44,6 +51,8 @@ const EditPage = (props) => {
             update(ref(db), updates);
         
         }
+
+        //only render "Delete button" and the waitModal if we are not accessing a caregiver page
         var waitM = ""
         if(type =='Caregiver'){
             waitM = ""

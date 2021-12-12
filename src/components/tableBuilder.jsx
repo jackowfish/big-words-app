@@ -6,7 +6,8 @@ import {HashRouter as Router, Switch, Route, Link, useParams, useRouteMatch} fro
 import { BiUser } from 'react-icons/bi';
 import { createPortal } from 'react-dom';
 
-
+//Accessed from MyAccount
+//This component is used to create a table of caregivers/readers/listeners based on the current user
 class TableBuilder extends React.Component {
     constructor(props){
         super();
@@ -25,10 +26,12 @@ class TableBuilder extends React.Component {
     componentDidMount() {
         this.render_data();
     }
-
+    
     render_data(){
         const db= getDatabase();
         const components_array = [];
+
+        //retrieve caregiver information
         if(this.state.name == "Caretaker"){
             var dataId = this.cookies.get('BigWordsUser').user.uid 
             const dataFirst = ref(db, 'Users/' + dataId +  "/First Name")
@@ -53,6 +56,7 @@ class TableBuilder extends React.Component {
                 
 
         }
+        //retrieve reader/listener information
         else{const component_list = ref(db, this.state.user)
 
         onValue(component_list, (snapshot) => {
@@ -79,6 +83,8 @@ class TableBuilder extends React.Component {
                         )
                     
             }
+            
+            //only contains unique components
             const uniqueComponents = components_array.filter((ele, idx) => idx == components_array.findIndex( elem => elem.id == ele.id))
             this.setState(this.state.componentArray = uniqueComponents)
         });}
@@ -95,6 +101,8 @@ class TableBuilder extends React.Component {
                         <tr key={user.id}>
                         <td>Name</td>
                         <td> {user.first} {user.last}</td>
+                        
+                        {/* generates dynamic page link to EditPage */}
                         <td><Link to={{
                             pathname:`/edit`,
                             search: `?sort=${user.id}`,
@@ -103,6 +111,7 @@ class TableBuilder extends React.Component {
                                 type: `${this.state.type}`
                             }
                             }}> <BsChevronRight size={20}/></Link></td>
+                            
                         </tr>
                         )
                     })}

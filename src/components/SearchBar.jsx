@@ -4,6 +4,7 @@ import Button from './Button'
 import {Link} from "react-router-dom"
 import {BiSearchAlt2} from 'react-icons/bi';
 
+//currently not in use, needs to be implemented
 const SearchBar = () => {
     return(
         <div className="field">

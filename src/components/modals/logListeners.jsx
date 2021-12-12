@@ -6,7 +6,7 @@ import Modal from "../../hooks/modal"
 import Cookies from 'universal-cookie';
 import TableBuilder from'../tableBuilder';
 
-
+//currently not in use, can be deleted 
 const LogListener = (props) => {
   const cookies = new Cookies();
   const db = getDatabase();

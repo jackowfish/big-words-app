@@ -4,6 +4,8 @@ import { getDatabase, ref, onValue, set } from "firebase/database";
 import {BsChevronRight} from 'react-icons/bs'
 import {HashRouter as Router, Switch, Route, Link, useParams, useRouteMatch} from "react-router-dom"
 
+//Accessed from LogSelect
+//Allows users to Add/Remove listers/readers from their current book log
 class AddRemoveBtn extends React.Component {
     constructor(props){
         super();
@@ -14,6 +16,7 @@ class AddRemoveBtn extends React.Component {
         };
     }
 
+    //
     onTriggerAdd = (id) => {
         this.state.userData = {id:id, willBe:"added"}
         this.props.logCallback(this.state.userData)
@@ -21,7 +24,7 @@ class AddRemoveBtn extends React.Component {
         this.forceUpdate();
     }
 
-
+    //
     onTriggerRemove = (id) => {
         this.state.userData = {id:id, willBe:"removed"}
         this.props.logCallback(this.state.userData)

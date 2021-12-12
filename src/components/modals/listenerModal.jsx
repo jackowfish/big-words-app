@@ -7,11 +7,13 @@ import useInput from "../../hooks/useInput";
 import Modal from "../../hooks/modal";
 
 
-
+//Accessed from "+" Button next to "Listeners" in MyAccount
+//This Modal is used to let users add a new listener to their account
 const ListenerModal = () => {
   const cookies = new Cookies();
   const db = getDatabase();
   
+  //onClick event, sends user input into their account information in the database
   const add_listener = async (event) => {
     //event.preventDefault();
     const newChild = push(ref(db, "Users/" +  cookies.get('BigWordsUser').user.uid + "/Children/"));
@@ -25,10 +27,12 @@ const ListenerModal = () => {
   openModal(event);
 }
 
+//takes user input for add_listener to use
   const first_name = useInput("")
   const last_name = useInput("")
-  const [showModal, setShowModal] = useState(false)
 
+  //toggle modal function
+  const [showModal, setShowModal] = useState(false)
   const openModal = (event) => {
     event.preventDefault();
     setShowModal(prev => !prev)
@@ -40,6 +44,8 @@ const ListenerModal = () => {
         onClick={openModal}>
           <AiOutlinePlusCircle size={20}/>
         </button>
+        
+        {/* Modal from "../../hooks/modal"; */}
         <Modal
         showModal ={showModal}
         setShowModal={setShowModal}
@@ -80,6 +86,7 @@ const ListenerModal = () => {
               </div>
             </div>
         }/>
+
     </div> 
   )
 

@@ -10,7 +10,8 @@ import Cookies from 'universal-cookie';
 import { getAuth } from '@firebase/auth';
 
 
-
+//Accessed from BookPv when the component is clicked
+//This component allows users to view more information about a given book and log them
 const BookInfo = (props) => {
   const cookies = new Cookies();
   const auth = getAuth();
@@ -36,6 +37,9 @@ const BookInfo = (props) => {
                     <img className="book_cover" src={bookInfo.cover} className="image"/>
                 </div>
                 <h1 className="bookDataText">{bookInfo.words} Words | {bookInfo.bigwords} Big Words</h1>
+              
+              {/* Unimplemented buttons, see "BigWords Next Steps" for more info on how to implement
+              these buttons */}
               {/* <Link id="ViewBigWordsButton" to="search">
                 <Button className="yellow button" name="View Big Words"/>
               </Link>
@@ -45,6 +49,7 @@ const BookInfo = (props) => {
               <Link id="ReadingHistoryButton" to="search">
                 <Button className="yellow button" name="Reading History"/>
               </Link> */}
+
               <LogBook data={bookInfo}/>
             </div>
         </div>

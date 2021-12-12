@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import'../styles/BookPv.css';
 import'../styles/index.css';
-import {AiOutlinePlusCircle, AiOutlineMinusCircle} from 'react-icons/ai'
 import {Link, useLocation, useHistory} from "react-router-dom"
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import Cookies from 'universal-cookie';
 import { getStorage, getDownloadURL } from "firebase/storage";
 import { ref as ref_storage } from "firebase/storage";
 import '../styles/MyLibrary.css';
-import { BsPuzzleFill } from 'react-icons/bs';
 
+//Accessed from MyLibrary
+//This component creates a list of books the user has logged by date
 class MyLibraryPv extends React.Component{
     constructor(props){
         super();
@@ -27,7 +27,6 @@ class MyLibraryPv extends React.Component{
     componentDidMount() {
         this.render_data();
     }
-
 
     render_data() {
 
@@ -87,6 +86,7 @@ class MyLibraryPv extends React.Component{
                             }
                         })
 
+                        //waiting for data to completely be returned before pushing to booksArray
                         setTimeout(100)
                         booksArray.push({
                             url: url,
@@ -97,6 +97,8 @@ class MyLibraryPv extends React.Component{
                             cover:`https://firebasestorage.googleapis.com/v0/b/bigwords-202f6.appspot.com/o/images%2F${url}?alt=media`,
                         })
                     }
+                    
+                    //wait for data to be returned before rendering
                     setTimeout(() => {
                         this.setState({
                           loaded: true

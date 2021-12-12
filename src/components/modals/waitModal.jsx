@@ -5,8 +5,9 @@ import ReactDOM from "react-dom";
 import Modal from "../../hooks/modal";
 import 'bulma/css/bulma.min.css';
 
-
-
+//Accessed from EditPage when "Delete Reader/Listener" is clicked
+// This modal is used to warn the user that they are about to delete a Reader/Listener off their account
+// When the 'Yes, delete listener' button is clicked, the reader/listener will be deleted  
 const WaitModal = (props) => {
   const cookies = new Cookies();
   const db = getDatabase();
@@ -19,11 +20,13 @@ const WaitModal = (props) => {
     window.location.reload(false);
 }
 
+//toggle modal button
   const openModal = (event) => {
     event.preventDefault();
     setShowModal(prev => !prev)
   }
 
+  //onClick event, deletes reader/listner from the account
   const delete_data = async (event) =>{
     event.preventDefault();
     remove(ref(db,props.data.id));

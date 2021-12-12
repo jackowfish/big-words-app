@@ -9,6 +9,8 @@ import TableBuilder from'../tableBuilder';
 import Cookies from 'universal-cookie';
 import LogSelect from "../LogSelect";
 
+//Accessed from BookInfo
+//This component allows users to log books to their account
 class LogBook extends React.Component{
   constructor(props){
     super();
@@ -30,6 +32,7 @@ class LogBook extends React.Component{
 
   componentDidMount(){}
 
+  //toggle modal function
   openModal = (event) => {
     event.preventDefault();
     if(this.state.show == false){
@@ -37,6 +40,7 @@ class LogBook extends React.Component{
       show:true
       })
     }else{
+      //resets readers and children array once modal closes
       this.setState({
         show:false,
         readers: [],
@@ -46,22 +50,26 @@ class LogBook extends React.Component{
 
   }
 
+  //Callback from LogSelect updates the readers list for the log
   handleReadersCallback = (childData)=> {
     this.state.readers = childData
   
   }
 
+  //Callback from LogSelect updates the listeners list for the log
   handleChildrenCallback = (childData)=> {
     this.state.children = childData
     
   }
 
-
+//onClick from LogBook button.  Sends book log information to the user's account within the database
   submitLog = async(event) => {
     event.preventDefault();
     const newLog = push(ref(this.db, "Users/" + this.cookies.get('BigWordsUser').user.uid + "/BooksRead/"));
     const logId = newLog.key
   
+    //replace date's "/" with "-"
+    //using "/" will cause each part of the date to become their own subheading
     const oldDate = new Date().toLocaleDateString()
     const todayDate = oldDate.replace(/-|\//g, "-")
     
@@ -102,9 +110,12 @@ class LogBook extends React.Component{
             <section className="modal-card-body">
               <h1 className="titleText">{this.state.title}</h1>
               <h1 className="authorText">By: {this.state.author}</h1>
+              
+              {/* Book Cover, currently not accessing the image correctly */}
               {/* <div className="bookInfo">
                 <img src={this.state.img} className="image"/>
               </div> */}
+
               <h1 className="bookDataText">{this.state.words} Words | {this.state.bigwords} BigWords</h1>
               <div className="userInfo">
                 <h1>Reader(s)</h1>

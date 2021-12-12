@@ -12,7 +12,7 @@ import { getAuth, signOut } from '@firebase/auth';
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import TableBuilder from'./tableBuilder';
 
-
+//This page displays the account information of the current user
 const MyAccount = () => {
     const cookies = new Cookies();
     const history = useHistory();

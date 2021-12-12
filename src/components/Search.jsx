@@ -7,6 +7,7 @@ import {getAuth} from '@firebase/auth';
 import '../styles/MyLibrary.css';
 import BookPv from './BookPv';
 
+//This page is for users to browse and search for books using a search bar
 const Search = () => {
     const cookies = new Cookies();
     const history = useHistory();

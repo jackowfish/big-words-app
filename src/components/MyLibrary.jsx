@@ -8,6 +8,7 @@ import'../styles/BookPv.css';
 import '../styles/MyLibrary.css';
 import MyLibraryPv from'./MyLibraryPv';
 
+//This page displays the books a user has logged by date
 const MyLibrary = () => {
     const cookies = new Cookies();
     const history = useHistory();

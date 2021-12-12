@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import TableBuilder from'../tableBuilder';
 
+//currently not in use, can be deleted
 const LogReader = () => {
   const cookies = new Cookies();
   const db = getDatabase();
