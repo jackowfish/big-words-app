@@ -23,6 +23,7 @@ const Search = () => {
           <NavBar className="navbar" current="search"/>
           <div className="row featuredBox">
               {/* <SearchBar/> */}
+              <p>Can't find a book you're looking for? Submit a <a href="mailto:jennifer.k.stone@med.unc.edu?subject=Book Suggestion for BigWords">request</a>!</p>
               <div className="row">
                   <h1 className="featuredHeader">All Books</h1>
                   <BookPv className="bookList" key="bookPv_list" name="featured"/>
