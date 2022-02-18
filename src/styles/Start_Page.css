@@ -7,11 +7,22 @@
 	justify-content: center;
 }
 
+.title {
+	font-size:100px;
+	color:#E0F2E9;
+	text-align:center;
+	padding: 15px;
+	font-family: garamond;
+}
+
+.border {
+	border-color:black;
+	border-width: thick;
+}
+
 .background {
-	/* background: linear-gradient(-45deg, #FFC857, #06D6A0, #23a6d5, #153B50); */
-	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1020%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(225%2c 146%2c 19%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c159 C 57.6%2c135.6 172.8%2c29.2 288%2c42 C 403.2%2c54.8 460.8%2c225 576%2c223 C 691.2%2c221 748.8%2c45.8 864%2c32 C 979.2%2c18.2 1036.8%2c137 1152%2c154 C 1267.2%2c171 1382.4%2c124.4 1440%2c117L1440 560L0 560z' fill='rgba(228%2c 226%2c 225%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c423 C 41.2%2c417.6 123.6%2c370.4 206%2c396 C 288.4%2c421.6 329.6%2c560.4 412%2c551 C 494.4%2c541.6 535.6%2c374.4 618%2c349 C 700.4%2c323.6 741.6%2c413.8 824%2c424 C 906.4%2c434.2 947.6%2c376.2 1030%2c400 C 1112.4%2c423.8 1154%2c560.8 1236%2c543 C 1318%2c525.2 1399.2%2c357.4 1440%2c311L1440 560L0 560z' fill='rgba(227%2c 152%2c 30%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1020'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+	background: linear-gradient(-40deg, #E0F2E9,#FFA630,#3C887E,#214746); 
 	background-size: 150% 100%;
-	animation: gradient 60s ease infinite;
 	height: 102vh;
 }
 
@@ -21,6 +32,37 @@
 
 .loginForm {
     margin: 20px;
+}
+
+.card {
+	padding:30px;
+	margin-top:200px;
+	margin-left:200px;
+	margin-right:200px;
+	background-color:rgb(224, 242, 233, 0.25);
+}
+
+.center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+  }
+
+.login {
+	background-color: #FFA630;
+	color:black;
+	font-family: garamond;
+	font-size:20px;
+}
+
+.signup {
+	background-color:#EE6C4D;
+	color:black;
+	font-family: garamond;
+	font-size:20px;
 }
 
 @keyframes gradient {

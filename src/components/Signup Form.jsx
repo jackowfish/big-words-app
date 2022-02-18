@@ -47,9 +47,7 @@ const SignUpForm = () => {
 
   return (
       <div className="rows is-vcentered background"> 
-        <div className="column">
-          <img src="https://firebasestorage.googleapis.com/v0/b/bigwords-202f6.appspot.com/o/BigWords.png?alt=media&token=c5301754-aba7-4c10-b1cb-389f4918be39" className="logo"/>
-        </div>
+        <div className="border card center">
         <div className="column signupform">
           <div className="field">
             <div className="control">
@@ -86,7 +84,8 @@ const SignUpForm = () => {
               <input className="input passwordConfirm" type="password" placeholder="Confirm Password"/>
             </div>
           </div>
-          <Button type="submit" className="yellow button" name="Sign Up" onClick={signUp}/>
+          <Button type="submit" className="signup button border" name="Sign Up" onClick={signUp}/>
+        </div>
         </div>
       </div>
     )
