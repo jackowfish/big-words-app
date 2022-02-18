@@ -1,13 +1,14 @@
 .welcomeBack {
-    background-color: white;
+    background-color: rgb(224, 242, 233, 0.25);
     margin-top: 15px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     padding-top: 80px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
+    font-family: garamond;
 }
 
 .homeText {
@@ -15,22 +16,25 @@
     text-align: left;
     font-weight: bold;
     font-size: 30px;
-    color: black;
+    color: #F7EDE2;
     text-decoration: underline;
+    font-family: garamond;
 }
 
 .welcomeText {
     padding-bottom: 20px;
     font-weight: bold;
-    font-size: 36px;
-    color: black;
+    font-size: 60px;
+    color: #F7EDE2;
+    font-family: garamond;
 }
 
-.bookDataText {
+.book-data-text {
     padding-bottom: 50px;
-    padding-top: 50px;
-    font-size: 24px;
-    color: black;
+    padding-top: 30px;
+    font-size: 50px;
+    color: #F7EDE2;
+    font-family: garamond;
 }
 
 .previousText {
@@ -39,8 +43,28 @@
     text-align: left;
     font-weight: bold;
     font-size: 24px;
-    color: black;
+    color: #F7EDE2;
     text-decoration: underline;
+    font-family: garamond;
+}
+
+.yellow {
+	background-color: #FFA630;
+	color:black;
+	font-family: garamond;
+	font-size:20px;
+}
+
+.orange {
+	background-color:#EE6C4D;
+	color:black;
+	font-family: garamond;
+	font-size:20px;
+}
+
+.border {
+	border-color:black;
+	border-width: thick;
 }
 
 hr {

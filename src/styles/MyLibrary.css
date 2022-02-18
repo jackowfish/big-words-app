@@ -1,7 +1,7 @@
 .libraryBox {
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: #FFC857;
+    background-color: rgb(224, 242, 233, 0.30);
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -14,7 +14,7 @@
 .libraryHeader{
     font-weight: bold;
     font-size: 20px;
-    color: black;
+    color: #F7EDE2;
     padding: 8px;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .libraryText {
-    background-color: white;
+    background-color:rgb(224, 242, 233, 0.25);
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -43,13 +43,12 @@
     color: black;
     float: left;
     text-decoration: underline;
-    text-shadow: 1px 1px white;
 }
 
 .featuredBox {
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: #FFC857;
+    background-color: rgb(224, 242, 233, 0.25);
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;

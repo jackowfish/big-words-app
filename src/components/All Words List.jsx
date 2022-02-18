@@ -193,7 +193,7 @@ class AllWords extends React.Component {
     
     render() {
         return (
-        <div className="column allWords_section">
+        <div className="column allWords_section border">
             <h1 className="allwords_title">All Words</h1>
             <p>
                 Sort by:
@@ -202,7 +202,7 @@ class AllWords extends React.Component {
                     <button className="most_button" id="most_button" onClick={this.sort_most}>Most Heard</button>
                     <button className="least_button" id="least_button" onClick={this.sort_least}>Least Heard</button>
             </p> 
-            <div className = "column allWords_list">
+            <div className = "column allWords_list border">
                 {this.state.loaded ? this.state.components_array : null}
             </div>
         </div>

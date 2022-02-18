@@ -91,10 +91,9 @@ class HomePage extends React.Component {
           <NavBar className="navbar" current="homepage"/>
           <div className="column welcomeBack">
             <h1 className="welcomeText">Welcome Back<br></br>{this.state.first_name}<br></br></h1>
-              <hr></hr>
-              {this.state.loaded ? <h1 className="bookDataText">Word Count: {this.state.word_count}<br></br>Big Word Count: {this.state.big_word_count}</h1> : <h1 className="bookDataText"></h1>}
+              <h1 className="book-data-text">Word Count: {this.state.word_count}<br></br>Big Word Count: {this.state.big_word_count}</h1> : <h1 className="bookDataText"></h1>
               <Link id="LogBooksButton" to="search">
-                <Button className="yellow button" name="Log Books"/>
+                <Button className="yellow button border" name="Log Books"/>
               </Link>
           </div>
       </div>

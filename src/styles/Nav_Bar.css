@@ -1,14 +1,14 @@
 .topnav {
-    background-color:white;
+    background-color:rgb(224, 242, 233, 0.25);
     box-shadow: 1px 3px 2px darkslategray;
     text-align: center;
   }
   
   .topnav div {
-    color: gray;
+    color: #F7EDE2;
     text-align: center;
     display: inline-block;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   div.admin {
@@ -18,16 +18,50 @@
   }
   
   .topnav a:hover {
-    background-color: white;
-    color: black;
+    color: #0F4C5C;
   }
 
   .topnav a:active {
-    background-color: white;
-    color: black;
+    color: #0F4C5C;
   }
 
   .topnav a {
-    color:gray;
+    color:#F7EDE2;
 
+  }
+
+  .card {
+    padding:30px;
+    margin-top:200px;
+    margin-left:200px;
+    margin-right:200px;
+    background-color:rgb(224, 242, 233, 0.25);
+  }
+  
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
+  
+  .login {
+    background-color: #FFA630;
+    color:black;
+    font-family: garamond;
+    font-size:20px;
+  }
+  
+  .signup {
+    background-color:#EE6C4D;
+    color:black;
+    font-family: garamond;
+    font-size:20px;
+  }
+  
+  .border {
+    border-color:black;
+    border-width: thick;
   }

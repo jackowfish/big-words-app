@@ -1,5 +1,5 @@
 .listener_name_section {
-    background-color: white;
+    background-color: rgb(224, 242, 233, 0.25);;
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -11,75 +11,89 @@
 
 .listener_name {
     font-weight: bold;
-    font-size: 20px;
-    color: black;
-    padding: 8px;
+    font-size: 30px;
+    color: #F7EDE2;
+    padding: 15px;
+    font-family: garamond;
 }
 
 .bigWords_section {
-    background-color: #FFC857;
+    background-color: rgb(224, 242, 233, 0.25);;
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
+    position:absolute;
+    top: 165px;
+    bottom:10px;
+    left:3px;
+    width:48%;
 }
 
 .bigWords_list {
-    background-color: white;
+    background-color: rgb(224, 242, 233, 0.5);;
     margin-top: 10px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
-    height: 260px;
+    height: 80%;
     overflow: auto;
 }
 
 .bigwords_title {
     font-weight: bold;
-    font-size: 18px;
-    color: black;
+    font-size: 40px;
+    color: #F7EDE2;
+    font-family: garamond;
 }
 
 .allWords_section {
-    background-color: #FFC857;
+    background-color: rgb(224, 242, 233, 0.25);;
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
+    position:absolute;
+    top: 165px;
+    bottom:10px;
+    right:3px;
+    width:48%;
 }
 
 .allWords_list {
-    background-color: white;
+    background-color: rgb(224, 242, 233, 0.5);
     margin-top: 10px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 1px 3px 2px darkslategray;
-    height: 260px;
+    height: 80%;
     overflow: auto;
 }
 
 .allwords_title {
     font-weight: bold;
-    font-size: 18px;
-    color: black;
+    font-size: 40px;
+    color: #F7EDE2;
+    font-family: garamond;
 }
 
 .current_word {
-    color: black;
-    font-size: 25px;
+    color: #061E23;
+    font-weight:bold;
+    font-size: 30px;
     text-align: left;
-    background-color: white;
+    background-color:#70A37F;
     border-radius: 15px;
-    height: 40px;
-    padding-left: 8px;
-    outline-width: 1px;
-    outline-style: solid;
-    outline-color: black;
+    border-color:#F7EDE2;
+    border-width:thick;
+    height: 65px;
+    padding: 10px;
     margin-bottom: 10px;
+    font-family: garamond;
 }
 
 .current_count {
@@ -89,8 +103,10 @@
 
 p {
     text-align: center;
-    color: black;
-    font-size: 13px;
+    color: #F7EDE2;
+    font-size: 30px;
+    font-family: garamond;
+    font-weight: bold;
 }
 
 button {
@@ -106,4 +122,20 @@ button {
     font-size: 15px;
     float: right;
     margin-top: 1px;
+    background-color:rgb(224, 242, 233, 0.25);
 }
+
+.right {
+    float:right;
+    width:50%;
+}
+
+.left {
+    float:left;
+    width:50%;
+}
+
+.border {
+    border-color:#F7EDE2;
+    border-width: thick;
+  }

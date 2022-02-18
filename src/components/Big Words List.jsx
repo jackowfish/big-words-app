@@ -191,7 +191,7 @@ class BigWords extends React.Component {
     
     render() {
         return (
-        <div className="column bigWords_section">
+        <div className="column bigWords_section border">
             <h1 className="bigwords_title">Big Words</h1>
             <p>
                 Sort by:
@@ -200,7 +200,7 @@ class BigWords extends React.Component {
                     <button className="most_button_big" id="most_button_big" onClick={this.sort_most}>Most Heard</button>
                     <button className="least_button_big" id="least_button_big" onClick={this.sort_least}>Least Heard</button>
             </p> 
-            <div className = "column bigWords_list">
+            <div className = "column bigWords_list border">
                 {this.state.loaded ? this.state.components_array : null}
             </div>
         </div>

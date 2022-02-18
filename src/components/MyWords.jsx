@@ -75,13 +75,17 @@ class MyWords extends React.Component {
     return (
     <div className="rows is-vcentered background"> 
       <NavBar className="navbar" current="mywords"/>
-      <div className="listener_name_section">
+      <div className="listener_name_section border">
           {this.state.has_child ? <h1 className="listener_name">{this.state.current_child} 
-          <button className="listener" onClick={this.toggleListener}>Switch Listener</button>
-          </h1> : <h1 className="listener_name">Add Children in Account</h1>}
+          <button className="listener border" onClick={this.toggleListener}>Switch Listener</button>
+          </h1> : <h1 className="listener_name border">Add Children in Account</h1>}
       </div>
-      {this.state.current_child_id != null && this.state.current_child_id.length > 0 ? <BigWords className="bigwords_list" child={this.state.current_child_id}/> : null}
-      {this.state.current_child_id != null && this.state.current_child_id.length > 0 ? <AllWords className="allwords_list" child={this.state.current_child_id}/> : null}
+      <div className="left">
+        {this.state.current_child_id != null && this.state.current_child_id.length > 0 ? <BigWords className="bigwords_list" child={this.state.current_child_id}/> : null}
+      </div>
+      <div className="right">
+        {this.state.current_child_id != null && this.state.current_child_id.length > 0 ? <AllWords className="allwords_list" child={this.state.current_child_id}/> : null}
+      </div>
     </div>
     
     )

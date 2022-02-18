@@ -68,38 +68,38 @@ const NavBar = (props) => {
     <div className="topnav">
         <div className={adminClass}>
             <Link id="HomepageLink" to="homepage">
-                <FaHome size={23 - sizeDiff} color={props.current == "homepage" ? "black" : ""}/> <br/>
+                <FaHome size={30 - sizeDiff} color={props.current == "homepage" ? "#092C35" : ""}/> <br/>
                 Home
             </Link>
         </div>
         <div className={adminClass}>
             <Link id="MyWordsLink" to="mywords">
-                <BsFillChatLeftTextFill size={21 - sizeDiff} color={props.current == "mywords" ? "black" : ""}/> <br/>
+                <BsFillChatLeftTextFill size={28 - sizeDiff} color={props.current == "mywords" ? "#092C35" : ""}/> <br/>
                 My Words
             </Link>
         </div>
         <div className={adminClass}>
             <Link id="MyLibraryLink" to="mylibrary">
-                <AiFillBook size={20 - sizeDiff} color={props.current == "mylibrary" ? "black" : ""}/> <br/>
+                <AiFillBook size={27 - sizeDiff} color={props.current == "mylibrary" ? "#092C35" : ""}/> <br/>
                 My Library
             </Link>
         </div>
         <div className={adminClass}>
             <Link id="SearchLink" to="search">
-                <FaSearch size={21 - sizeDiff} color={props.current == "search" ? "black" : ""}/> <br/>
+                <FaSearch size={28 - sizeDiff} color={props.current == "search" ? "#092C35" : ""}/> <br/>
                 Search
             </Link>
         </div>
         <div className={adminClass}>
             <Link id="MyAccountLink" to="myaccount">
-                <RiAccountCircleFill size={23 - sizeDiff} color={props.current == "myaccount" ? "black" : ""}/> <br/>
+                <RiAccountCircleFill size={30 - sizeDiff} color={props.current == "myaccount" ? "#092C35" : ""}/> <br/>
                 Account
             </Link>
         </div>
         {isAdmin && 
             <div className={adminClass}>
                 <Link id="AdminLink" to="admin">
-                    <FaBookMedical size={23 - sizeDiff} color={props.current == "admin" ? "black" : ""}/> <br/>
+                    <FaBookMedical size={30 - sizeDiff} color={props.current == "admin" ? "#092C35" : ""}/> <br/>
                     Add Book
                 </Link>
             </div>

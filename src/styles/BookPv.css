@@ -1,12 +1,13 @@
 
 .bookpv {
-    background-color:white;
+    background-color:#70A37F;
     border-radius: 10px;
     margin: 20px; 
     display: flex;
     justify-content: left;
     align-items: center;
     outline-style: solid;
+    padding-left:20px;
     width: 95%
   }
 
@@ -14,7 +15,7 @@
     color: black;
     text-align: center;
     display: inline-block;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .textGrouping div{
